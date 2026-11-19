@@ -99,6 +99,7 @@ export const films: Film[] = [
     title: 'O Homem do Futuro',
     year: '2011',
     director: 'Cláudio Torres',
+    poster: '/videoteca/o-homem-do-futuro.webp',
     persona: { title: 'Saudosista do futuro', line: 'Voltaria no tempo só para refazer aquela festa.' },
   },
   {
