@@ -4,7 +4,6 @@ export type SectionId =
   | 'sobre'
   | 'jukebox'
   | 'videoteca'
-  | 'mural'
   | 'contato';
 
 export interface SectionMeta {
@@ -21,6 +20,5 @@ export const sections: SectionMeta[] = [
   { id: 'sobre', num: '03', label: 'Sobre mim', blurb: 'quem, como, com o quê' },
   { id: 'jukebox', num: '04', label: 'Jukebox', blurb: 'trilha de trabalho' },
   { id: 'videoteca', num: '05', label: 'Videoteca', blurb: 'filmes de referência' },
-  { id: 'mural', num: '06', label: 'Mural', blurb: 'parede de referências' },
-  { id: 'contato', num: '07', label: 'Contato', blurb: 'vamos conversar' },
+  { id: 'contato', num: '06', label: 'Contato', blurb: 'vamos conversar' },
 ];

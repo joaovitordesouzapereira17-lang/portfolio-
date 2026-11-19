@@ -8,6 +8,9 @@ import { IndexMenu } from './components/layout/IndexMenu';
 import { Grain } from './components/decor/Grain';
 import { Cursor } from './components/decor/Cursor';
 import { Hero } from './sections/Hero/Hero';
+import { Jukebox } from './sections/Jukebox/Jukebox';
+import { Videoteca } from './sections/Videoteca/Videoteca';
+import { TornEdge } from './components/decor/TornEdge';
 import { PlaceholderSection } from './sections/Placeholder/PlaceholderSection';
 
 const ids = sections.map((s) => s.id);
@@ -39,12 +42,14 @@ export default function App() {
 
       <main id="conteudo">
         <Hero />
-        {/* Etapa 1: seções abaixo são provisórias, apenas para validar navegação e ritmo de cores */}
+        {/* Seções ainda provisórias: Trabalhos, Sobre mim e Contato */}
         <PlaceholderSection meta={byId.trabalhos} tone="black" note="Galeria de projetos com dados separados — próxima etapa." />
+        <TornEdge seed="sobre" color="var(--c-paper)" fibre="var(--c-paper-dim)" />
         <PlaceholderSection meta={byId.sobre} tone="paper" note="Apresentação pessoal com espaço para fotografia — próxima etapa." />
-        <PlaceholderSection meta={byId.jukebox} tone="blue" note="Player visual sem áudio automático — próxima etapa." />
-        <PlaceholderSection meta={byId.videoteca} tone="black" note="Pôsteres em grade assimétrica com fichas — próxima etapa." />
-        <PlaceholderSection meta={byId.mural} tone="purple" note="Parede de referências em colagem — próxima etapa." />
+        <TornEdge seed="jukebox" color="var(--c-blue)" />
+        <Jukebox />
+        <Videoteca />
+        <TornEdge seed="contato" color="var(--c-wine)" />
         <PlaceholderSection meta={byId.contato} tone="wine" note="Links configuráveis em src/data/site.ts — próxima etapa." />
       </main>
 

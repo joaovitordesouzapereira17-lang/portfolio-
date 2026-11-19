@@ -81,7 +81,7 @@ export function Hero() {
         </p>
         <p className={`mono ${styles.metaCenter}`}>Folha de rosto</p>
         <p className="mono">
-          Nº 01 <span className={styles.dim}>—</span> 07
+          Nº 01 <span className={styles.dim}>—</span> 06
         </p>
       </motion.div>
 

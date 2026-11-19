@@ -1,4 +1,5 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
+import { useDialog } from '../../hooks/useDialog';
 import { AnimatePresence, motion } from 'motion/react';
 import { sections } from '../../data/sections';
 import { site } from '../../data/site';
@@ -15,35 +16,7 @@ interface Props {
 export function IndexMenu({ open, active, onClose }: Props) {
   const panelRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (!open) return;
-    const panel = panelRef.current;
-    const first = panel?.querySelector<HTMLElement>('a');
-    first?.focus();
-    document.body.style.overflow = 'hidden';
-
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-      // Trap de foco simples
-      if (e.key === 'Tab' && panel) {
-        const items = Array.from(panel.querySelectorAll<HTMLElement>('a, button'));
-        const firstEl = items[0];
-        const lastEl = items[items.length - 1];
-        if (e.shiftKey && document.activeElement === firstEl) {
-          e.preventDefault();
-          lastEl.focus();
-        } else if (!e.shiftKey && document.activeElement === lastEl) {
-          e.preventDefault();
-          firstEl.focus();
-        }
-      }
-    };
-    window.addEventListener('keydown', onKey);
-    return () => {
-      window.removeEventListener('keydown', onKey);
-      document.body.style.overflow = '';
-    };
-  }, [open, onClose]);
+  useDialog(open, panelRef, onClose);
 
   return (
     <AnimatePresence>

@@ -1,0 +1,19 @@
+.edge {
+  position: relative;
+  z-index: 2;
+  height: clamp(28px, 4vw, 56px);
+  margin-top: calc(clamp(28px, 4vw, 56px) * -1);
+  margin-bottom: -1px;
+  pointer-events: none;
+}
+
+.fibre,
+.face {
+  position: absolute;
+  inset: 0;
+}
+
+.fibre {
+  opacity: 0.9;
+  translate: 0 -3px;
+}

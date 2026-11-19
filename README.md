@@ -28,7 +28,11 @@ src/
 - Textos de apresentação e links de contato: `src/data/site.ts` (links vazios não viram botão).
 - Nomes/ordem das seções: `src/data/sections.ts`.
 - Cores e fontes: `src/styles/tokens.css`.
+- Jukebox: `src/data/jukebox.ts` — `src` (arquivo autorizado em `public/audio`), `link` (plataforma externa) e `cover` (imagem em `public/jukebox`). As faixas DEMO são sintetizadas no navegador e podem ser apagadas.
+- Videoteca: `src/data/videoteca.ts` — `title`, `year`, `director`, `comment` e `poster` (imagem em `public/videoteca`). Sem pôster, um provisório é gerado.
 
 ## Status
 
-Etapa 1 — identidade visual, navegação e Início. Seções 02–07 estão provisórias ("em montagem").
+- Etapa 1 — identidade visual, navegação e Início.
+- Etapa 2 — Jukebox e Videoteca. Mural removido.
+- Pendentes: Trabalhos, Sobre mim e Contato (provisórias, "em montagem").

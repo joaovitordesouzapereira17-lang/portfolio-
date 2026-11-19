@@ -1,0 +1,21 @@
+.tape {
+  display: inline-block;
+  padding: 0.3rem 0.9rem 0.25rem;
+  font-family: var(--f-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  background: rgba(190, 186, 178, 0.88);
+  color: var(--c-ink);
+  backdrop-filter: blur(1px);
+}
+
+.tape[data-tone='red'] {
+  background: rgba(200, 32, 61, 0.92);
+  color: var(--c-paper);
+}
+
+.tape[data-tone='paper'] {
+  background: var(--c-paper);
+}
