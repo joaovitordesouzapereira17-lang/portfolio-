@@ -76,6 +76,7 @@ export const films: Film[] = [
     title: 'O Cão e a Raposa',
     year: '1981',
     director: 'Ted Berman, Richard Rich e Art Stevens',
+    poster: '/videoteca/o-cao-e-a-raposa.webp',
     persona: { title: 'Amizade acima de tudo', line: 'Acredita que amigo de infância é para sempre — mesmo contra o mundo.' },
   },
   {
@@ -83,6 +84,7 @@ export const films: Film[] = [
     title: 'Reflexões de um Liquidificador',
     year: '2010',
     director: 'André Klotzel',
+    poster: '/videoteca/reflexoes-de-um-liquidificador.webp',
     persona: { title: 'Filósofo de cozinha', line: 'Pensar é moer, moer é pensar. Gosta do estranho e do brasileiro.' },
   },
   {
@@ -111,6 +113,7 @@ export const films: Film[] = [
     title: 'La La Land',
     year: '2016',
     director: 'Damien Chazelle',
+    poster: '/videoteca/la-la-land.webp',
     persona: { title: 'Sonhador de jazz', line: 'Escolhe o sonho, mesmo sabendo o preço. Dança em estacionamento.' },
   },
   {
@@ -118,6 +121,7 @@ export const films: Film[] = [
     title: 'As Vantagens de Ser Invisível',
     year: '2012',
     director: 'Stephen Chbosky',
+    poster: '/videoteca/as-vantagens-de-ser-invisivel.webp',
     persona: { title: 'Infinito por um instante', line: 'Observa tudo em silêncio e guarda as músicas certas para a hora certa.' },
   },
   {
@@ -125,6 +129,7 @@ export const films: Film[] = [
     title: 'Sociedade dos Poetas Mortos',
     year: '1989',
     director: 'Peter Weir',
+    poster: '/videoteca/sociedade-dos-poetas-mortos.webp',
     persona: { title: 'Carpe diem ambulante', line: 'Sobe na mesa para ver o mundo de outro ângulo.' },
   },
 ];
