@@ -1,7 +1,7 @@
 /**
  * Dados gerais do site.
  * Edite aqui textos de apresentação e links de contato.
- * Links vazios ('') não são exibidos como botões — aparecem como "a definir".
+ * Contatos vazios ('') simplesmente não aparecem na seção Contato.
  */
 export const site = {
   name: 'João Vitor',
@@ -12,8 +12,10 @@ export const site = {
     'Designer gráfico, editor de vídeo e estudante de Publicidade e Propaganda. Este site é um caderno de trabalho: peças, cortes, referências e coisas que me formam.',
   edition: '2026',
   contact: {
-    email: '',
-    linkedin: '',
+    email: 'joaovitordesouzapereira17@gmail.com',
+    /** só números, com DDD — vira link de WhatsApp e de ligação */
+    phone: '11970934843',
+    linkedin: 'https://www.linkedin.com/in/joaovitordesouzapereira',
     instagram: '',
     behance: '',
   },

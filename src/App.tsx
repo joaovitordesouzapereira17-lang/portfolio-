@@ -11,6 +11,7 @@ import { Hero } from './sections/Hero/Hero';
 import { Jukebox } from './sections/Jukebox/Jukebox';
 import { Videoteca } from './sections/Videoteca/Videoteca';
 import { TornEdge } from './components/decor/TornEdge';
+import { Contact } from './sections/Contact/Contact';
 import { PlaceholderSection } from './sections/Placeholder/PlaceholderSection';
 
 const ids = sections.map((s) => s.id);
@@ -42,7 +43,7 @@ export default function App() {
 
       <main id="conteudo">
         <Hero />
-        {/* Seções ainda provisórias: Trabalhos, Sobre mim e Contato */}
+        {/* Seções ainda provisórias: Trabalhos e Sobre mim */}
         <PlaceholderSection meta={byId.trabalhos} tone="black" note="Galeria de projetos com dados separados — próxima etapa." />
         <TornEdge seed="sobre" color="var(--c-paper)" fibre="var(--c-paper-dim)" />
         <PlaceholderSection meta={byId.sobre} tone="paper" note="Apresentação pessoal com espaço para fotografia — próxima etapa." />
@@ -50,7 +51,7 @@ export default function App() {
         <Jukebox />
         <Videoteca />
         <TornEdge seed="contato" color="var(--c-wine)" />
-        <PlaceholderSection meta={byId.contato} tone="wine" note="Links configuráveis em src/data/site.ts — próxima etapa." />
+        <Contact />
       </main>
 
       <Grain />
