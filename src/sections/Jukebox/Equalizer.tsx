@@ -20,9 +20,21 @@ export function Equalizer({ bars = 18, playing, getAnalyser, size = 'lg' }: Prop
       return;
     }
     const analyser = getAnalyser();
-    if (!analyser) return;
-    const data = new Uint8Array(analyser.frequencyBinCount);
     let raf = 0;
+    if (!analyser) {
+      // fonte externa (Spotify): o áudio fica no iframe, então o movimento é simulado
+      const phase = els.map((_, i) => i * 1.7);
+      const sim = (t: number) => {
+        els.forEach((el, i) => {
+          const v = 0.35 + 0.3 * Math.sin(t / 180 + phase[i]) * Math.sin(t / 470 + i) + 0.25 * Math.sin(t / 95 + i * 2.3);
+          el.style.transform = `scaleY(${Math.min(1, Math.max(0.06, v * (1 - i / (els.length * 1.6)))).toFixed(3)})`;
+        });
+        raf = requestAnimationFrame(sim);
+      };
+      raf = requestAnimationFrame(sim);
+      return () => cancelAnimationFrame(raf);
+    }
+    const data = new Uint8Array(analyser.frequencyBinCount);
     const loop = () => {
       analyser.getByteFrequencyData(data);
       els.forEach((el, i) => {

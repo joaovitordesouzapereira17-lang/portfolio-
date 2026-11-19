@@ -1,8 +1,10 @@
+import { useRef } from 'react';
 import { motion } from 'motion/react';
 import { ExternalLink, Pause, Play, SkipBack, SkipForward, Volume2, VolumeX } from 'lucide-react';
 import { sections } from '../../data/sections';
 import { tracks, type Track } from '../../data/jukebox';
 import { useJukebox, formatTime, trackDuration } from '../../hooks/useJukebox';
+import { spotifyUrl } from '../../lib/spotify';
 import { SectionHeader } from '../../components/ui/SectionHeader';
 import { Tape } from '../../components/ui/Tape';
 import { CoverArt } from '../../components/decor/CoverArt';
@@ -16,7 +18,7 @@ function Cover({ track, i }: { track: Track; i: number }) {
   return track.cover ? (
     <img src={track.cover} alt="" loading="lazy" decoding="async" />
   ) : (
-    <CoverArt variant={i} label={track.demo ? `DEMO ${String(i + 1).padStart(2, '0')}` : track.title} />
+    <CoverArt variant={i} label={(track.from ?? track.artist).toUpperCase()} />
   );
 }
 
@@ -26,7 +28,9 @@ function Cover({ track, i }: { track: Track; i: number }) {
  * Sem áudio automático: o som só começa num clique.
  */
 export function Jukebox() {
-  const j = useJukebox(tracks);
+  const spotifyHost = useRef<HTMLDivElement>(null);
+  const j = useJukebox(tracks, spotifyHost);
+  const ext = j.track.spotify ? spotifyUrl(j.track.spotify) : j.track.link;
   const total = String(tracks.length).padStart(2, '0');
   const n = String(j.index + 1).padStart(2, '0');
 
@@ -37,8 +41,8 @@ export function Jukebox() {
         <motion.p className={styles.notice} variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
           <Tape tilt={2} tone="paper">nada toca sozinho</Tape>
           <span>
-            Aperte play para ouvir. As faixas DEMO são esboços sintetizados ao vivo no navegador — ficam aqui até eu
-            colocar músicas com fonte autorizada.
+            Trilhas dos filmes da minha videoteca. Aperte play: o som vem do player oficial do Spotify (prévia de 30s
+            sem login, faixa inteira se você estiver logado).
           </span>
         </motion.p>
       </div>
@@ -80,7 +84,9 @@ export function Jukebox() {
               <div className={styles.lcdTop}>
                 <span>
                   FAIXA {n}/{total}
+                  {j.track.spotify && <em className={styles.demoTag}>SPOTIFY</em>}
                   {j.track.demo && <em className={styles.demoTag}>DEMO</em>}
+                  {j.loading && <em className={styles.loadTag}>carregando…</em>}
                 </span>
                 <span className={styles.time} aria-hidden="true">
                   {formatTime(j.position)}
@@ -95,7 +101,7 @@ export function Jukebox() {
               </p>
               <p className={styles.nowArtist}>
                 {j.track.artist}
-                {j.track.album && <span> — {j.track.album}</span>}
+                {j.track.from && <span> · trilha de {j.track.from}</span>}
               </p>
               <Equalizer playing={j.playing} getAnalyser={j.analyser} />
             </div>
@@ -142,6 +148,7 @@ export function Jukebox() {
                 />
               </label>
 
+              {!j.track.spotify && (
               <div className={styles.vol}>
                 <button
                   type="button"
@@ -162,11 +169,20 @@ export function Jukebox() {
                   style={{ ['--fill' as string]: `${j.volume * 100}%` }}
                 />
               </div>
+              )}
             </div>
 
-            {j.track.link && j.playable && (
-              <a className={styles.extLink} href={j.track.link} target="_blank" rel="noreferrer">
-                ouvir na fonte <ExternalLink size={12} aria-hidden="true" />
+            {/* player oficial do Spotify — montado só depois do primeiro play */}
+            <div className={styles.embedWrap} data-mounted={j.spotifyMounted || undefined}>
+              <div ref={spotifyHost} className={styles.embedHost} />
+              {!j.spotifyMounted && (
+                <p className={styles.embedHint}>o player do Spotify aparece aqui quando você der play</p>
+              )}
+            </div>
+
+            {ext && (
+              <a className={styles.extLink} href={ext} target="_blank" rel="noreferrer">
+                {j.track.spotify ? 'abrir no Spotify' : 'ouvir na fonte'} <ExternalLink size={12} aria-hidden="true" />
               </a>
             )}
             {j.error && (
@@ -205,7 +221,9 @@ export function Jukebox() {
                         <Play size={14} />
                       )}
                     </span>
-                    <span className={styles.rowDur}>{t.demo ? formatTime(trackDuration(t)) : '—'}</span>
+                    <span className={styles.rowDur}>
+                      {t.demo ? formatTime(trackDuration(t)) : (t.from ?? '—')}
+                    </span>
                   </button>
                 </li>
               );

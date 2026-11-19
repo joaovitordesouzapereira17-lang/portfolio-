@@ -1,15 +1,12 @@
+import type { Film } from '../../data/videoteca';
 import { films } from '../../data/videoteca';
 import { PosterArt } from '../../components/decor/PosterArt';
 
-export const filmNum = (i: number) => String(i + 1).padStart(2, '0');
-export const filmTitle = (i: number) => films[i].title || `Filme ${filmNum(i)}`;
-
-/** Pôster real (se informado) ou provisório gerado */
-export function Poster({ i }: { i: number }) {
-  const f = films[i];
-  return f.poster ? (
-    <img src={f.poster} alt="" loading="lazy" decoding="async" />
+/** Pôster real (se informado) ou provisório gerado com o título */
+export function Poster({ film }: { film: Film }) {
+  return film.poster ? (
+    <img src={film.poster} alt="" loading="lazy" decoding="async" draggable={false} />
   ) : (
-    <PosterArt variant={i} num={filmNum(i)} />
+    <PosterArt variant={films.indexOf(film)} title={film.title} year={film.year} />
   );
 }

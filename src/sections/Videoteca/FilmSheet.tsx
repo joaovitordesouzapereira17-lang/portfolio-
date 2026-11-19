@@ -3,7 +3,9 @@ import { AnimatePresence, motion } from 'motion/react';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { films } from '../../data/videoteca';
 import { useDialog } from '../../hooks/useDialog';
-import { Poster, filmNum, filmTitle } from './Poster';
+import { Poster } from './Poster';
+
+const num = (i: number) => String(i + 1).padStart(2, '0');
 import styles from './FilmSheet.module.css';
 
 interface Props {
@@ -53,7 +55,7 @@ export function FilmSheet({ open, onClose, onNavigate }: Props) {
                 <ChevronLeft size={18} />
               </button>
               <span className="mono">
-                {filmNum(open)} / {String(films.length).padStart(2, '0')}
+                {num(open)} / {num(films.length - 1)}
               </span>
               <button type="button" onClick={() => go(1)} aria-label="Próxima ficha">
                 <ChevronRight size={18} />
@@ -71,34 +73,30 @@ export function FilmSheet({ open, onClose, onNavigate }: Props) {
 
 function Sheet({ i }: { i: number }) {
   const f = films[i];
-  const placeholder = !f.title;
-  const field = (v?: string) => v || <span className={styles.blank}>a preencher</span>;
-
   return (
     <div className={styles.body} key={f.id}>
       <div className={styles.posterCol}>
         <div className={styles.poster}>
-          <Poster i={i} />
+          <Poster film={f} />
         </div>
-        {placeholder && <span className={styles.stamp}>Demo</span>}
       </div>
 
       <div className={styles.fields}>
         <p className={styles.org}>
           <span>Videoteca JV</span>
-          <span>Ficha nº {filmNum(i)}</span>
+          <span>Ficha nº {num(i)}</span>
         </p>
         <h3 id="film-sheet-title" className={styles.title}>
-          {filmTitle(i)}
+          {f.title}
         </h3>
         <dl className={styles.dl}>
           <div>
             <dt>Ano</dt>
-            <dd>{field(f.year)}</dd>
+            <dd>{f.year}</dd>
           </div>
           <div>
             <dt>Direção</dt>
-            <dd>{field(f.director)}</dd>
+            <dd>{f.director}</dd>
           </div>
           <div className={styles.commentRow}>
             <dt>Comentário pessoal</dt>

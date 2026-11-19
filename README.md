@@ -28,11 +28,12 @@ src/
 - Textos de apresentação e links de contato: `src/data/site.ts` (links vazios não viram botão).
 - Nomes/ordem das seções: `src/data/sections.ts`.
 - Cores e fontes: `src/styles/tokens.css`.
-- Jukebox: `src/data/jukebox.ts` — `src` (arquivo autorizado em `public/audio`), `link` (plataforma externa) e `cover` (imagem em `public/jukebox`). As faixas DEMO são sintetizadas no navegador e podem ser apagadas.
-- Videoteca: `src/data/videoteca.ts` — `title`, `year`, `director`, `comment` e `poster` (imagem em `public/videoteca`). Sem pôster, um provisório é gerado.
+- Jukebox: `src/data/jukebox.ts` — `spotify` (link ou URI de faixa; toca pelo player oficial do Spotify: prévia de 30s sem login, faixa inteira logado), `src` (arquivo próprio/licenciado em `public/audio`), `link` (externo) e `cover`.
+- Videoteca / tier list: `src/data/videoteca.ts` — `title`, `year`, `director`, `poster` (em `public/videoteca`, de preferência .webp ~480px), `comment`, `persona` (perfil que o visitante recebe se o filme ficar no topo) e `myTier` (sua nota; com todos preenchidos, a carteirinha mostra a compatibilidade do visitante com você).
 
 ## Status
 
 - Etapa 1 — identidade visual, navegação e Início.
 - Etapa 2 — Jukebox e Videoteca. Mural removido.
+- Etapa 3 — Jukebox com Spotify; Videoteca virou tier list interativa com carteirinha final (PNG).
 - Pendentes: Trabalhos, Sobre mim e Contato (provisórias, "em montagem").
