@@ -75,6 +75,9 @@ export function TierBoard({ tl, onInfo }: Props) {
 
   const onPointerDown = (e: RPointerEvent<HTMLButtonElement>, id: string) => {
     if (e.pointerType !== 'mouse' || e.button !== 0) return;
+    // impede seleção de texto e o "arraste nativo" do navegador, que cancelaria o nosso
+    e.preventDefault();
+    window.getSelection()?.removeAllRanges();
     start.current = { id, x: e.clientX, y: e.clientY, rect: e.currentTarget.getBoundingClientRect() };
 
     const move = (ev: PointerEvent) => {
@@ -166,7 +169,11 @@ export function TierBoard({ tl, onInfo }: Props) {
   const ghost = drag ? films.find((f) => f.id === drag.id) : null;
 
   return (
-    <div className={styles.wrap} data-targeting={targeting || undefined}>
+    <div
+      className={styles.wrap}
+      data-targeting={targeting || undefined}
+      onDragStart={(e) => e.preventDefault()}
+    >
       <p className="visually-hidden" aria-live="polite">
         {announce}
       </p>
