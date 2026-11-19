@@ -92,6 +92,7 @@ export const films: Film[] = [
     title: 'Efeito Borboleta',
     year: '2004',
     director: 'Eric Bress e J. Mackye Gruber',
+    poster: '/videoteca/efeito-borboleta.webp',
     persona: { title: 'Viajante de linhas do tempo', line: 'Repassa cada escolha mil vezes antes de dormir.' },
   },
   {
@@ -107,6 +108,7 @@ export const films: Film[] = [
     title: 'Clube dos Cinco',
     year: '1985',
     director: 'John Hughes',
+    poster: '/videoteca/clube-dos-cinco.webp',
     persona: { title: 'Rebelde da detenção', line: 'Não cabe em um rótulo só — e faz questão disso.' },
   },
   {
