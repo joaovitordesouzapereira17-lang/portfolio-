@@ -1,0 +1,51 @@
+/* ==========================================================
+   TOKENS — identidade visual João Vitor
+   Base preta · vinho/vermelho principais · azul/roxo contraste
+   ========================================================== */
+:root {
+  /* Paleta */
+  --c-black: #101014;
+  --c-wine: #68152f;
+  --c-red: #c8203d;
+  --c-blue: #272a91;
+  --c-purple: #7139a8;
+
+  /* Neutros derivados (papel, tinta) */
+  --c-paper: #ece6dc;      /* papel off-white para recortes */
+  --c-paper-dim: #b9b2a7;
+  --c-ink: #101014;
+  --c-line: rgba(236, 230, 220, 0.16);
+  --c-line-strong: rgba(236, 230, 220, 0.42);
+  --c-text: #ece6dc;
+  --c-text-dim: rgba(236, 230, 220, 0.62);
+
+  /* Tipografia */
+  --f-display: 'Anton', 'Impact', 'Arial Narrow', sans-serif;
+  --f-grotesk: 'Archivo Variable', 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --f-mono: 'Space Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --fs-micro: 0.6875rem;   /* 11px — etiquetas */
+  --fs-small: 0.8125rem;   /* 13px */
+  --fs-body: 1rem;
+  --fs-lead: clamp(1.05rem, 0.95rem + 0.5vw, 1.35rem);
+  --fs-h3: clamp(1.5rem, 1.1rem + 1.6vw, 2.5rem);
+  --fs-h2: clamp(3rem, 1.6rem + 7vw, 9rem);
+  --fs-giant: clamp(6rem, 2rem + 22vw, 26rem);
+
+  /* Espaço */
+  --gutter: clamp(1rem, 0.6rem + 1.8vw, 2.5rem);
+  --header-h: 3.5rem;
+  --radius-win: 2px;
+
+  /* Movimento */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-snap: cubic-bezier(0.7, 0, 0.2, 1);
+  --dur-fast: 180ms;
+  --dur-med: 420ms;
+
+  /* Camadas */
+  --z-grain: 90;
+  --z-header: 80;
+  --z-menu: 70;
+  --z-cursor: 120;
+}

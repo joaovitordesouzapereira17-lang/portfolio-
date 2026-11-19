@@ -1,0 +1,12 @@
+.mask {
+  display: block;
+  overflow: hidden;
+  /* respiro para acentos (Ã, Ó) não serem cortados pela máscara */
+  padding-top: 0.14em;
+  margin-top: -0.14em;
+}
+
+.line {
+  display: block;
+  will-change: transform;
+}

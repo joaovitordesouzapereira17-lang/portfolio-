@@ -1,0 +1,42 @@
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: slide var(--speed) linear infinite;
+  animation-direction: var(--dir);
+}
+
+.marquee:hover .track {
+  animation-play-state: paused;
+}
+
+.run {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+}
+
+.sep {
+  display: inline-block;
+  margin: 0 0.6em;
+}
+
+@keyframes slide {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+}

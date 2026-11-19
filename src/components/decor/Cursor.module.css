@@ -1,0 +1,55 @@
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-cursor);
+  pointer-events: none;
+  mix-blend-mode: difference;
+}
+
+.cross {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  translate: -50% -50%;
+  border: 1px solid var(--c-paper);
+  border-radius: 50%;
+  transition: width var(--dur-med) var(--ease-out), height var(--dur-med) var(--ease-out),
+    background-color var(--dur-fast);
+}
+
+.cross::before,
+.cross::after {
+  content: '';
+  position: absolute;
+  background: var(--c-paper);
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+}
+
+.cross::before { width: 44px; height: 1px; }
+.cross::after { width: 1px; height: 44px; }
+
+.cursor[data-active] .cross {
+  width: 64px;
+  height: 64px;
+  background: var(--c-paper);
+}
+
+.cursor[data-pressed] .cross {
+  width: 18px;
+  height: 18px;
+}
+
+.label {
+  position: absolute;
+  left: 40px;
+  top: 14px;
+  font-family: var(--f-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--c-paper);
+}

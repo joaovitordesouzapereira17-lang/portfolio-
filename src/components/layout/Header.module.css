@@ -1,0 +1,112 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: var(--z-header);
+  height: var(--header-h);
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0 var(--gutter);
+  border-bottom: 1px solid var(--c-line);
+  background: rgba(16, 16, 20, 0.72);
+  backdrop-filter: blur(10px) saturate(1.2);
+  -webkit-backdrop-filter: blur(10px) saturate(1.2);
+}
+
+.logo {
+  text-decoration: none;
+  display: inline-flex;
+}
+
+.logoMark {
+  display: inline-block;
+  padding: 0.15rem 0.45rem 0.05rem;
+  background: var(--c-red);
+  color: var(--c-black);
+  font-family: var(--f-display);
+  font-size: 1.35rem;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  rotate: -4deg;
+  transition: rotate var(--dur-med) var(--ease-out), background-color var(--dur-fast);
+}
+
+.logo:hover .logoMark,
+.logo:focus-visible .logoMark {
+  rotate: 3deg;
+  background: var(--c-paper);
+}
+
+.where {
+  display: flex;
+  gap: 0.5rem;
+  color: var(--c-text-dim);
+}
+
+.num {
+  color: var(--c-red);
+}
+
+.slash {
+  opacity: 0.4;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--c-text-dim);
+}
+
+.rec {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--c-red);
+  animation: blink 1.6s steps(2, jump-none) infinite;
+}
+
+.time {
+  color: var(--c-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.menuBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 0.85rem;
+  border: 1px solid var(--c-line-strong);
+  transition: background-color var(--dur-fast), color var(--dur-fast), border-color var(--dur-fast);
+}
+
+.menuBtn:hover,
+.menuBtn[aria-expanded='true'] {
+  background: var(--c-paper);
+  color: var(--c-black);
+  border-color: var(--c-paper);
+}
+
+.plus {
+  transition: rotate var(--dur-med) var(--ease-out);
+}
+
+.plus[data-open] {
+  rotate: 45deg;
+}
+
+@keyframes blink {
+  to {
+    opacity: 0.15;
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    grid-template-columns: auto 1fr auto;
+  }
+  .status {
+    display: none;
+  }
+}

@@ -1,0 +1,35 @@
+.marks {
+  position: absolute;
+  inset: var(--inset);
+  pointer-events: none;
+}
+
+.marks span {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+}
+
+.marks span::before,
+.marks span::after {
+  content: '';
+  position: absolute;
+  background: var(--c-line-strong);
+}
+
+.marks span::before {
+  width: 100%;
+  height: 1px;
+  top: 50%;
+}
+
+.marks span::after {
+  width: 1px;
+  height: 100%;
+  left: 50%;
+}
+
+.tl { top: -9px; left: -9px; }
+.tr { top: -9px; right: -9px; }
+.bl { bottom: -9px; left: -9px; }
+.br { bottom: -9px; right: -9px; }
