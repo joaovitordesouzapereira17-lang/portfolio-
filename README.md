@@ -29,6 +29,7 @@ src/
 - Nomes/ordem das seções: `src/data/sections.ts`. Para mostrar/esconder uma seção, troque `enabled` (Trabalhos e Sobre mim estão desligadas até o conteúdo chegar).
 - Cores e fontes: `src/styles/tokens.css`.
 - Jukebox: `src/data/jukebox.ts` — `spotify` (link ou URI de faixa; toca pelo player oficial do Spotify: prévia de 30s sem login, faixa inteira logado), `src` (arquivo próprio/licenciado em `public/audio`), `link` (externo) e `cover`.
+- Trabalhos: `src/data/works.ts` — cada projeto vira um "encarte" com as cores da própria marca (`theme`), galeria com visualizador, paleta, mascote e créditos. Imagens em `public/trabalhos/<projeto>/` (webp 1600px + `-800`).
 - Videoteca / tier list: `src/data/videoteca.ts` — `title`, `year`, `director`, `poster` (em `public/videoteca`, de preferência .webp ~480px), `comment`, `persona` (perfil que o visitante recebe se o filme ficar no topo) e `myTier` (sua nota; com todos preenchidos, a carteirinha mostra a compatibilidade do visitante com você).
 
 ## Status
@@ -36,4 +37,5 @@ src/
 - Etapa 1 — identidade visual, navegação e Início.
 - Etapa 2 — Jukebox e Videoteca. Mural removido.
 - Etapa 3 — Jukebox com Spotify; Videoteca virou tier list interativa com carteirinha final (PNG).
-- Pendentes: Trabalhos e Sobre mim (desligadas em `sections.ts`, aguardando conteúdo).
+- Etapa 4 — Trabalhos com o case Daidai Coffee.
+- Pendente: Sobre mim (desligada em `sections.ts`, aguardando foto e texto).

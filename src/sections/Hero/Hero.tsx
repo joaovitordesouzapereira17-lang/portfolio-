@@ -136,9 +136,9 @@ export function Hero() {
 
       {/* ——— Chamadas ——— */}
       <motion.div className={styles.ctaRow} variants={fadeUp} initial="hidden" animate="show" custom={12}>
-        <a href="#videoteca" className={styles.cta} data-cursor="jogar">
-          <span className={styles.ctaIdx}>{sectionMeta('videoteca').num}</span>
-          <span>Montar a tier list</span>
+        <a href="#trabalhos" className={styles.cta} data-cursor="ver">
+          <span className={styles.ctaIdx}>{sectionMeta('trabalhos').num}</span>
+          <span>Ver trabalhos</span>
           <ArrowRight size={18} aria-hidden="true" />
         </a>
         <a href="#contato" className={styles.ctaGhost} data-cursor="falar">

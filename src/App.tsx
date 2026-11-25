@@ -12,6 +12,7 @@ import { Jukebox } from './sections/Jukebox/Jukebox';
 import { Videoteca } from './sections/Videoteca/Videoteca';
 import { TornEdge } from './components/decor/TornEdge';
 import { Contact } from './sections/Contact/Contact';
+import { Works } from './sections/Works/Works';
 import { FloatingSticker } from './components/stickers/FloatingSticker';
 import { PlaceholderSection } from './sections/Placeholder/PlaceholderSection';
 
@@ -44,15 +45,7 @@ export default function App() {
       <main id="conteudo">
         <Hero />
         {/* Trabalhos e Sobre mim: desativadas em src/data/sections.ts até o conteúdo chegar */}
-        {isEnabled('trabalhos') && (
-          <>
-        <PlaceholderSection meta={sectionMeta('trabalhos')} tone="black" note="Galeria de projetos com dados separados — próxima etapa.">
-          <FloatingSticker name="estrela" pos={{ top: '12%', right: '18%' }} rotate={10} mobile={{ pos: { top: '0.75rem', right: '4%' }, size: '5.5rem' }} />
-          <FloatingSticker name="autoral" pos={{ bottom: '10%', left: '38%' }} rotate={-8} delay={0.15} size="clamp(6rem, 4rem + 5vw, 9.5rem)" mobile={{ pos: { top: '40%', left: '8%' }, size: '6rem' }} />
-          <FloatingSticker name="raio" pos={{ top: '8%', left: '46%' }} rotate={12} delay={0.3} size="clamp(5.5rem, 4rem + 4vw, 8.5rem)" hideOnMobile />
-        </PlaceholderSection>
-          </>
-        )}
+        {isEnabled('trabalhos') && <Works />}
         {isEnabled('sobre') && (
           <>
         <TornEdge seed="sobre" color="var(--c-paper)" fibre="var(--c-paper-dim)" />
