@@ -24,7 +24,9 @@ export function Works() {
 
   return (
     <section id="trabalhos" className={styles.section} aria-labelledby="trabalhos-title">
-      <FloatingSticker name="raio" pos={{ top: '5%', right: '10%' }} rotate={12} size="clamp(5rem, 3.5rem + 4vw, 8rem)" hideOnMobile />
+      <FloatingSticker name="estrela" pos={{ top: '1.5rem', right: '9%' }} rotate={12} size="clamp(5.5rem, 4rem + 4vw, 8.5rem)" mobile={{ pos: { top: '1rem', right: '3%' }, size: '5rem' }} />
+      <FloatingSticker name="jpg" pos={{ top: '2.5rem', left: '44%' }} rotate={-9} size="clamp(5rem, 3.5rem + 3.5vw, 7.5rem)" hideOnMobile delay={0.15} />
+      <FloatingSticker name="lupa" pos={{ top: '62%', left: '0.5%' }} rotate={-14} size="clamp(5rem, 3.5rem + 4vw, 8rem)" hideOnMobile delay={0.2} />
 
       <div className={styles.head} id="trabalhos-title">
         <SectionHeader num={meta.num} title={meta.label} kicker={`${works.length} ${works.length === 1 ? 'projeto' : 'projetos'}`} />

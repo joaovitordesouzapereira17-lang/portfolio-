@@ -49,7 +49,8 @@ export function Videoteca() {
     <section id="videoteca" className={styles.section} aria-label={meta.label}>
       <div className={styles.perf} aria-hidden="true" />
 
-      <FloatingSticker name="estrela" pos={{ top: '4.5rem', left: '47%' }} rotate={12} size="clamp(6rem, 4rem + 4vw, 9rem)" hideOnMobile delay={0.15} />
+      <FloatingSticker name="filme" pos={{ top: '4rem', left: '47%' }} rotate={10} size="clamp(6rem, 4rem + 4vw, 9rem)" hideOnMobile delay={0.15} />
+      <FloatingSticker name="lixeira" pos={{ bottom: '1.5rem', left: '13rem' }} rotate={-8} size="clamp(4.5rem, 3rem + 3vw, 6.5rem)" hideOnMobile delay={0.2} />
       <FloatingSticker name="ticket" pos={{ top: '3.5rem', right: '6%' }} rotate={-10} size="clamp(7rem, 4.5rem + 7vw, 12.5rem)" hideOnMobile />
 
       <header className={styles.head}>

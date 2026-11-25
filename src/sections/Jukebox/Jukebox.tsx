@@ -10,6 +10,7 @@ import { Tape } from '../../components/ui/Tape';
 import { CoverArt } from '../../components/decor/CoverArt';
 import { fadeUp, enter } from '../../lib/motion';
 import { Equalizer } from './Equalizer';
+import { HalftoneSky } from '../../components/decor/HalftoneSky';
 import { FloatingSticker } from '../../components/stickers/FloatingSticker';
 import styles from './Jukebox.module.css';
 
@@ -48,6 +49,8 @@ export function Jukebox() {
         </motion.p>
       </div>
 
+      <HalftoneSky />
+      <FloatingSticker name="celular" pos={{ bottom: '3%', left: '31%' }} rotate={8} delay={0.25} size="clamp(6rem, 4rem + 5vw, 10rem)" hideOnMobile />
       <FloatingSticker name="smiley" pos={{ top: '6%', left: '42%' }} rotate={-10} size="clamp(6rem, 4rem + 4vw, 9rem)" hideOnMobile />
       <FloatingSticker name="cassete" pos={{ bottom: '6%', left: '6%' }} rotate={-9} delay={0.2} size="clamp(7rem, 4.5rem + 7vw, 12rem)" mobile={{ pos: { top: '5rem', right: '4%' }, size: '6.5rem' }} />
 

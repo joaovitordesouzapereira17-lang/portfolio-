@@ -36,6 +36,17 @@
   animation: spin 3s linear infinite;
 }
 
+.pulse {
+  stroke-dasharray: 260;
+  animation: trace 2.4s linear infinite;
+  filter: drop-shadow(0 0 4px var(--c-red));
+}
+
+@keyframes trace {
+  from { stroke-dashoffset: 260; }
+  to { stroke-dashoffset: -260; }
+}
+
 .recDot {
   animation: blink 1.4s steps(2, jump-none) infinite;
 }
@@ -61,7 +72,8 @@
 @media (prefers-reduced-motion: reduce) {
   .spin,
   .reel,
-  .recDot {
+  .recDot,
+  .pulse {
     animation: none;
   }
 }

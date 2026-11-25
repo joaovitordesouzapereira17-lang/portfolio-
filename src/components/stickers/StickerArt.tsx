@@ -223,6 +223,147 @@ const Cassete = () => (
   </>
 );
 
+
+const globeMap = [
+  '.....HOOOOO.....',
+  '...HHOOLLOOOO...',
+  '..HOLLLLLOOOLO..',
+  '.HOLLLLLLOOLLLO.',
+  '.OOLLLLLOOOLLLO.',
+  'OOOOLLLOOOOOLLOO',
+  'OOOOOLLOOOOOOLOO',
+  'OOOOOLLLLOOOOOOO',
+  'OOOOOOLLLLOOOLOO',
+  'OOOOOOLLLLOOLLLO',
+  '.OOOOOOLLLOOLLL.',
+  '.OOOOOOLLOOOOLO.',
+  '..OOOOOLOOOOOO..',
+  '...OOOOOOOOOO...',
+  '.....OOOOOO.....',
+];
+const Globo = () => <Pixels map={globeMap} px={14} ox={18} oy={25} border={7} colors={{ O: C.blue, L: C.red, H: C.paper }} />;
+
+const Monitor = () => (
+  <>
+    <rect x="30" y="26" width="200" height="156" rx="10" fill={C.paperDim} stroke={C.paper} strokeWidth="7" />
+    <rect x="48" y="42" width="164" height="112" rx="6" fill={C.black} />
+    <polyline
+      points="56,102 98,102 110,72 124,134 138,90 148,102 204,102"
+      fill="none"
+      stroke={C.red}
+      strokeWidth="4"
+      strokeLinejoin="round"
+      className={styles.pulse}
+    />
+    <rect x="98" y="182" width="64" height="12" fill={C.paperDim} />
+    <rect x="22" y="192" width="216" height="46" rx="6" fill={C.paperDim} stroke={C.paper} strokeWidth="7" />
+    <rect x="40" y="211" width="14" height="8" fill={C.red} />
+    <rect x="150" y="212" width="70" height="6" fill={C.black} />
+  </>
+);
+
+const Lixeira = () => (
+  <>
+    <path d="M62 78 H198 L184 244 H76 Z" fill={C.paperDim} stroke={C.paper} strokeWidth="7" strokeLinejoin="round" />
+    {[92, 114, 136, 158].map((x, i) => (
+      <path key={x} d={`M${x + 4 * i - 6} 96 L${x + 2 * i - 2} 228`} stroke={C.black} strokeWidth="6" strokeLinecap="round" />
+    ))}
+    <rect x="48" y="52" width="164" height="24" rx="5" fill={C.paperDim} stroke={C.paper} strokeWidth="7" />
+    <path d="M104 52 V36 Q104 28 112 28 H148 Q156 28 156 36 V52" fill="none" stroke={C.paper} strokeWidth="14" />
+    <path d="M104 52 V36 Q104 28 112 28 H148 Q156 28 156 36 V52" fill="none" stroke={C.paperDim} strokeWidth="7" />
+  </>
+);
+
+const Lupa = () => (
+  <>
+    <line x1="150" y1="150" x2="226" y2="226" stroke={C.paper} strokeWidth="40" strokeLinecap="round" />
+    <line x1="150" y1="150" x2="226" y2="226" stroke={C.black} strokeWidth="26" strokeLinecap="round" />
+    <circle cx="108" cy="108" r="78" fill={C.paper} />
+    <circle cx="108" cy="108" r="66" fill={C.paperDim} opacity="0.45" stroke={C.black} strokeWidth="14" />
+    <path d="M70 92 A42 42 0 0 1 104 62" fill="none" stroke={C.paper} strokeWidth="9" strokeLinecap="round" />
+  </>
+);
+
+const Celular = () => (
+  <g transform="rotate(-12 130 130)">
+    <rect x="72" y="8" width="116" height="112" rx="22" fill={C.blue} stroke={C.paper} strokeWidth="7" />
+    <rect x="88" y="26" width="84" height="74" rx="6" fill={C.paper} />
+    <text x="96" y="46" style={{ ...mono, fontSize: 10 }} fill={C.blue}>
+      ✉ 1 NOVA
+    </text>
+    <rect x="96" y="56" width="68" height="4" fill={C.black} opacity="0.35" />
+    <rect x="96" y="66" width="52" height="4" fill={C.black} opacity="0.35" />
+    <rect x="96" y="76" width="60" height="4" fill={C.black} opacity="0.35" />
+    <rect x="84" y="118" width="92" height="16" rx="4" fill={C.paperDim} />
+    <rect x="72" y="132" width="116" height="120" rx="18" fill={C.blue} stroke={C.paper} strokeWidth="7" />
+    <circle cx="130" cy="160" r="15" fill={C.paper} />
+    <circle cx="130" cy="160" r="6" fill={C.red} />
+    {Array.from({ length: 12 }, (_, i) => (
+      <rect key={i} x={89 + (i % 3) * 29} y={184 + Math.floor(i / 3) * 15} width="24" height="10" rx="3" fill={C.paper} opacity="0.9" />
+    ))}
+  </g>
+);
+
+const Aviso = () => (
+  <>
+    <rect x="34" y="30" width="216" height="164" fill={C.blue} stroke={C.paper} strokeWidth="7" />
+    <rect x="12" y="52" width="216" height="168" fill={C.paper} stroke={C.paper} strokeWidth="7" />
+    <rect x="12" y="52" width="216" height="168" fill="none" stroke={C.black} strokeWidth="2" />
+    <rect x="17" y="57" width="206" height="28" fill={C.blue} />
+    <text x="27" y="76" style={{ ...mono, fontSize: 13 }} fill={C.paper}>
+      aviso.exe
+    </text>
+    <rect x="198" y="61" width="20" height="19" fill={C.paper} stroke={C.black} strokeWidth="1.5" />
+    <path d="M203 66 L213 76 M213 66 L203 76" stroke={C.black} strokeWidth="2.5" />
+    <text x="120" y="132" textAnchor="middle" style={{ fontFamily: 'var(--f-grotesk)', fontWeight: 800, fontSize: 21 }} fill={C.black}>
+      Mandar um oi?
+    </text>
+    <rect x="84" y="152" width="72" height="38" fill={C.paper} stroke={C.black} strokeWidth="2" />
+    <rect x="90" y="158" width="60" height="26" fill="none" stroke={C.black} strokeWidth="1" strokeDasharray="2 2" />
+    <text x="120" y="178" textAnchor="middle" style={{ fontFamily: 'var(--f-grotesk)', fontSize: 18 }} fill={C.black}>
+      OK
+    </text>
+  </>
+);
+
+const filePath = 'M52 18 H168 L212 62 V244 H52 Z';
+const Arquivo = ({ label, color, children }: { label: string; color: string; children: ReactElement }) => (
+  <>
+    <path d={filePath} fill={C.paper} stroke={C.paper} strokeWidth="12" strokeLinejoin="round" />
+    <path d={filePath} fill={C.paper} stroke={C.black} strokeWidth="3" strokeLinejoin="round" />
+    <path d="M168 18 V62 H212" fill={C.paperDim} stroke={C.black} strokeWidth="3" strokeLinejoin="round" />
+    <rect x="30" y="70" width="148" height="52" fill={color} stroke={C.paper} strokeWidth="4" />
+    <text x="104" y="111" textAnchor="middle" style={{ ...display, fontSize: 40 }} fill={C.paper}>
+      {label}
+    </text>
+    {children}
+  </>
+);
+
+const ArquivoJpg = () => (
+  <Arquivo label="JPG" color={C.blue}>
+    <>
+      <path d="M78 186 Q132 140 186 186 Q132 232 78 186 Z" fill={C.paper} stroke={C.black} strokeWidth="5" />
+      <circle cx="132" cy="186" r="19" fill={C.black} />
+      <circle cx="139" cy="179" r="5" fill={C.paper} />
+    </>
+  </Arquivo>
+);
+
+const ArquivoFilme = () => (
+  <Arquivo label="FILME" color={C.wine}>
+    <>
+      {[140, 162, 184, 206, 228].map((y) => (
+        <g key={y}>
+          <rect x="60" y={y - 8} width="12" height="10" fill={C.black} />
+          <rect x="192" y={y - 8} width="12" height="10" fill={C.black} />
+        </g>
+      ))}
+      <path d="M114 152 L162 184 L114 216 Z" fill={C.red} />
+    </>
+  </Arquivo>
+);
+
 export const stickerArt = {
   selo: Selo,
   estrela: Estrela,
@@ -235,6 +376,14 @@ export const stickerArt = {
   rec: Rec,
   autoral: Autoral,
   cassete: Cassete,
+  globo: Globo,
+  monitor: Monitor,
+  lixeira: Lixeira,
+  lupa: Lupa,
+  celular: Celular,
+  aviso: Aviso,
+  jpg: ArquivoJpg,
+  filme: ArquivoFilme,
 } satisfies Record<string, () => ReactElement>;
 
 export type StickerName = keyof typeof stickerArt;

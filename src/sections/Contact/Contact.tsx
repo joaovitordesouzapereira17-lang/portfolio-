@@ -7,7 +7,7 @@ import { MaskText } from '../../components/ui/MaskText';
 import { Marquee } from '../../components/ui/Marquee';
 import { Tape } from '../../components/ui/Tape';
 import { CropMarks } from '../../components/decor/CropMarks';
-import { fadeUp, enter } from '../../lib/motion';
+import { fadeUp } from '../../lib/motion';
 import { FloatingSticker } from '../../components/stickers/FloatingSticker';
 import styles from './Contact.module.css';
 
@@ -79,8 +79,8 @@ export function Contact() {
     <section id="contato" className={styles.section} aria-labelledby="contato-title">
       <CropMarks inset="1.25rem var(--gutter)" />
 
-      <FloatingSticker name="disquete" pos={{ top: '7rem', right: '26%' }} rotate={-14} size="clamp(6rem, 4rem + 5vw, 10rem)" hideOnMobile />
-      <FloatingSticker name="coracao" pos={{ bottom: '7.5rem', right: '9%' }} rotate={10} delay={0.2} size="clamp(5rem, 3.5rem + 4vw, 8.5rem)" />
+      <FloatingSticker name="disquete" pos={{ bottom: '9rem', left: '3%' }} rotate={-14} size="clamp(6rem, 4rem + 5vw, 10rem)" hideOnMobile />
+      <FloatingSticker name="globo" pos={{ bottom: '7.5rem', right: '9%' }} rotate={-8} delay={0.2} size="clamp(5rem, 3.5rem + 4vw, 8.5rem)" />
 
       <div className={styles.top}>
         <motion.p className={`mono ${styles.kicker}`} variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
@@ -94,17 +94,14 @@ export function Contact() {
           <MaskText lines={['vamos conversar.']} className={styles.titleOutline} offset={2} />
         </h2>
 
-        <motion.div
-          className={styles.sticker}
-          initial={enter({ scale: 0, rotate: -30 })}
-          whileInView={{ scale: 1, rotate: 10 }}
-          viewport={{ once: true }}
-          transition={{ type: 'spring', stiffness: 170, damping: 13, delay: 0.4 }}
-          aria-hidden="true"
-        >
-          <span>manda</span>
-          <span>um oi</span>
-        </motion.div>
+        <FloatingSticker
+          name="aviso"
+          pos={{ top: 'clamp(2rem, 5vw, 5rem)', right: 'clamp(0.5rem, 5vw, 6rem)' }}
+          rotate={6}
+          delay={0.4}
+          size="clamp(9rem, 6rem + 9vw, 15rem)"
+          hideOnMobile
+        />
       </div>
 
       <ul className={styles.list}>

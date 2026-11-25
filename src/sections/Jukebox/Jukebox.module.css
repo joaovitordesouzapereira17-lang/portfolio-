@@ -10,6 +10,12 @@
   overflow: hidden;
 }
 
+.head,
+.grid {
+  position: relative;
+  z-index: 1;
+}
+
 .head {
   display: flex;
   justify-content: space-between;
