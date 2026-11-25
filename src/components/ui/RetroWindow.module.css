@@ -63,6 +63,7 @@
 }
 
 .ctrl {
+  position: relative;
   display: grid;
   place-items: center;
   width: 22px;
@@ -93,4 +94,11 @@
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: rgba(16, 16, 20, 0.6);
+}
+
+/* área de toque de 44px sem mudar o desenho */
+.ctrl::after {
+  content: '';
+  position: absolute;
+  inset: -12px -11px;
 }

@@ -6,7 +6,7 @@ import { films } from '../../data/videoteca';
 import { useTierList } from '../../hooks/useTierList';
 import { Ransom } from '../../components/ui/Ransom';
 import { Tape } from '../../components/ui/Tape';
-import { fadeUp } from '../../lib/motion';
+import { fadeUp, enter } from '../../lib/motion';
 import { TierBoard } from './TierBoard';
 import { FilmSheet } from './FilmSheet';
 import { ResultCard } from './ResultCard';
@@ -59,7 +59,7 @@ export function Videoteca() {
         </motion.p>
         <motion.h2
           className={styles.title}
-          initial={{ opacity: 0, y: 30 }}
+          initial={enter({ opacity: 0, y: 30 })}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}

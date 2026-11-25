@@ -302,8 +302,8 @@
 .ctrl {
   display: grid;
   place-items: center;
-  width: 42px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
   background: var(--c-paper);
   color: var(--c-ink);
   text-decoration: none;
@@ -322,8 +322,8 @@
 }
 
 .playBtn {
-  width: 54px;
-  height: 46px;
+  width: 56px;
+  height: 48px;
   background: var(--c-red);
   color: var(--c-paper);
 }
@@ -357,12 +357,12 @@
   appearance: none;
   -webkit-appearance: none;
   width: 100%;
-  height: 10px;
+  /* 32px de área de toque; a trilha visível continua com 10px */
+  height: 32px;
   margin: 0;
   background:
-    linear-gradient(90deg, var(--c-red) 0 var(--fill), transparent var(--fill)),
-    var(--c-paper-dim);
-  box-shadow: inset 1px 1px 0 rgba(16, 16, 20, 0.5);
+    linear-gradient(90deg, var(--c-red) 0 var(--fill), transparent var(--fill)) center / 100% 10px no-repeat,
+    linear-gradient(var(--c-paper-dim), var(--c-paper-dim)) center / 100% 10px no-repeat;
   cursor: pointer;
 }
 
@@ -403,13 +403,11 @@
 
 .embedWrap {
   position: relative;
-  margin: 0.5rem 0.5rem 0;
-  min-height: 2.6rem;
-  border: 1px dashed var(--c-paper-dim);
+  margin: 0 0.5rem;
 }
 
 .embedWrap[data-mounted] {
-  border: 0;
+  margin-top: 0.5rem;
   min-height: 80px;
 }
 
@@ -436,6 +434,7 @@
 
 .extLink,
 .error {
+  min-height: 44px;
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;

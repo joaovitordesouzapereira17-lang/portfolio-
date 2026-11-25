@@ -10,7 +10,7 @@ import { Sticker } from '../../components/ui/Sticker';
 import { Marquee } from '../../components/ui/Marquee';
 import { CropMarks } from '../../components/decor/CropMarks';
 import { FloatingSticker } from '../../components/stickers/FloatingSticker';
-import { fadeUp, pasteIn } from '../../lib/motion';
+import { fadeUp, pasteIn, enter } from '../../lib/motion';
 import styles from './Hero.module.css';
 
 /**
@@ -120,7 +120,7 @@ export function Hero() {
       <motion.div
         className={styles.winSlot}
         style={interactive ? { x: nearX, y: nearY } : undefined}
-        initial={{ opacity: 0, y: 30 }}
+        initial={enter({ opacity: 0, y: 30 })}
         animate={{ opacity: 1, y: 0, transition: { delay: 1.1, duration: 0.6 } }}
       >
         <RetroWindow
@@ -148,7 +148,7 @@ export function Hero() {
 
       <motion.div
         className={styles.stickerSlot}
-        initial={{ scale: 0, rotate: -40 }}
+        initial={enter({ scale: 0, rotate: -40 })}
         animate={{ scale: 1, rotate: 12, transition: { delay: 1.3, type: 'spring', stiffness: 160, damping: 14 } }}
       >
         <Sticker href={`#${sections[1]?.id ?? 'contato'}`} label={`Ir para ${sections[1]?.label ?? 'Contato'}`} />

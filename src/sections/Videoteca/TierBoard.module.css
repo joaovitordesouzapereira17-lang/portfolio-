@@ -185,6 +185,13 @@
   transition: opacity var(--dur-fast), background-color var(--dur-fast);
 }
 
+/* área de toque de 44px sem mudar o desenho */
+.info::after {
+  content: '';
+  position: absolute;
+  inset: -11px;
+}
+
 .chipWrap:hover .info,
 .info:focus-visible,
 .chip[aria-pressed='true'] + .info {

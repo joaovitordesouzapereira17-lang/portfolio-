@@ -7,7 +7,7 @@ import { MaskText } from '../../components/ui/MaskText';
 import { Marquee } from '../../components/ui/Marquee';
 import { Tape } from '../../components/ui/Tape';
 import { CropMarks } from '../../components/decor/CropMarks';
-import { fadeUp } from '../../lib/motion';
+import { fadeUp, enter } from '../../lib/motion';
 import { FloatingSticker } from '../../components/stickers/FloatingSticker';
 import styles from './Contact.module.css';
 
@@ -96,7 +96,7 @@ export function Contact() {
 
         <motion.div
           className={styles.sticker}
-          initial={{ scale: 0, rotate: -30 }}
+          initial={enter({ scale: 0, rotate: -30 })}
           whileInView={{ scale: 1, rotate: 10 }}
           viewport={{ once: true }}
           transition={{ type: 'spring', stiffness: 170, damping: 13, delay: 0.4 }}
@@ -168,7 +168,7 @@ export function Contact() {
           © {site.edition} {site.name}
         </p>
         <Tape tilt={-2} tone="paper" className={styles.footTape}>
-          feito à mão · react + muito café
+          feito à mão em React
         </Tape>
         <a href="#inicio" className={`mono ${styles.toTop}`} data-cursor="topo">
           voltar ao início <ArrowUp size={14} aria-hidden="true" />

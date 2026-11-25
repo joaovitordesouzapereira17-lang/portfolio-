@@ -17,6 +17,9 @@
 .logo {
   text-decoration: none;
   display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  min-width: 44px;
 }
 
 .logoMark {
@@ -75,6 +78,7 @@
 .menuBtn {
   display: inline-flex;
   align-items: center;
+  min-height: 44px;
   gap: 0.6rem;
   padding: 0.55rem 0.85rem;
   border: 1px solid var(--c-line-strong);

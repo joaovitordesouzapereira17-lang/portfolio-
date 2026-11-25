@@ -18,7 +18,7 @@ const all: (Omit<SectionMeta, 'num'> & { enabled: boolean })[] = [
   { id: 'inicio', label: 'Início', blurb: 'capa / apresentação', enabled: true },
   { id: 'trabalhos', label: 'Trabalhos', blurb: 'projetos selecionados', enabled: false },
   { id: 'sobre', label: 'Sobre mim', blurb: 'quem, como, com o quê', enabled: false },
-  { id: 'jukebox', label: 'Jukebox', blurb: 'trilha de trabalho', enabled: true },
+  { id: 'jukebox', label: 'Jukebox', blurb: 'trilhas da videoteca', enabled: true },
   { id: 'videoteca', label: 'Videoteca', blurb: 'filmes de referência', enabled: true },
   { id: 'contato', label: 'Contato', blurb: 'vamos conversar', enabled: true },
 ];

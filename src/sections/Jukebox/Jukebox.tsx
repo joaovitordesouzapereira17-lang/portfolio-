@@ -8,7 +8,7 @@ import { spotifyUrl } from '../../lib/spotify';
 import { SectionHeader } from '../../components/ui/SectionHeader';
 import { Tape } from '../../components/ui/Tape';
 import { CoverArt } from '../../components/decor/CoverArt';
-import { fadeUp } from '../../lib/motion';
+import { fadeUp, enter } from '../../lib/motion';
 import { Equalizer } from './Equalizer';
 import { FloatingSticker } from '../../components/stickers/FloatingSticker';
 import styles from './Jukebox.module.css';
@@ -55,7 +55,7 @@ export function Jukebox() {
         {/* ——— Caixa de CD ——— */}
         <motion.div
           className={styles.caseCol}
-          initial={{ opacity: 0, rotate: -8, y: 40 }}
+          initial={enter({ opacity: 0, rotate: -8, y: 40 })}
           whileInView={{ opacity: 1, rotate: -3, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
@@ -94,7 +94,7 @@ export function Jukebox() {
                 </span>
                 <span className={styles.time} aria-hidden="true">
                   {formatTime(j.position)}
-                  <small> / {formatTime(j.duration)}</small>
+                  <small> / {j.duration ? formatTime(j.duration) : '--:--'}</small>
                 </span>
               </div>
               <p className={styles.nowTitle} aria-live="polite">
@@ -179,9 +179,6 @@ export function Jukebox() {
             {/* player oficial do Spotify — montado só depois do primeiro play */}
             <div className={styles.embedWrap} data-mounted={j.spotifyMounted || undefined}>
               <div ref={spotifyHost} className={styles.embedHost} />
-              {!j.spotifyMounted && (
-                <p className={styles.embedHint}>o player do Spotify aparece aqui quando você der play</p>
-              )}
             </div>
 
             {ext && (
