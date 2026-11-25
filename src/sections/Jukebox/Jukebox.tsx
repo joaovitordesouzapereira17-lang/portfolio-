@@ -48,7 +48,7 @@ export function Jukebox() {
         </motion.p>
       </div>
 
-      <FloatingSticker name="cassete" pos={{ bottom: '6%', left: '6%' }} rotate={-9} delay={0.2} size="clamp(7rem, 4.5rem + 7vw, 12rem)" />
+      <FloatingSticker name="cassete" pos={{ bottom: '6%', left: '6%' }} rotate={-9} delay={0.2} size="clamp(7rem, 4.5rem + 7vw, 12rem)" mobile={{ pos: { top: '5rem', right: '4%' }, size: '6.5rem' }} />
 
       <div className={styles.grid}>
         {/* ——— Caixa de CD ——— */}

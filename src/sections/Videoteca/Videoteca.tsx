@@ -49,7 +49,7 @@ export function Videoteca() {
     <section id="videoteca" className={styles.section} aria-label={meta.label}>
       <div className={styles.perf} aria-hidden="true" />
 
-      <FloatingSticker name="ticket" pos={{ top: '3.5rem', right: '6%' }} rotate={-10} size="clamp(7rem, 4.5rem + 7vw, 12.5rem)" />
+      <FloatingSticker name="ticket" pos={{ top: '3.5rem', right: '6%' }} rotate={-10} size="clamp(7rem, 4.5rem + 7vw, 12.5rem)" hideOnMobile />
 
       <header className={styles.head}>
         <motion.p className={`mono ${styles.kicker}`} variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}>

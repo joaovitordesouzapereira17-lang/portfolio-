@@ -28,7 +28,8 @@ export function MaskText({ lines, as = 'span', className, lineClassName, offset 
     : { animate: 'show' };
 
   return (
-    <Tag className={className} aria-label={lines.join(' ')} initial="hidden" {...trigger}>
+    <Tag className={className} initial="hidden" {...trigger}>
+      <span className="visually-hidden">{lines.join(' ')}</span>
       {lines.map((line, i) => (
         <span
           key={i}

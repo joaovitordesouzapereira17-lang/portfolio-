@@ -431,7 +431,7 @@
   letter-spacing: 0.06em;
   text-transform: uppercase;
   text-align: center;
-  color: rgba(16, 16, 20, 0.5);
+  color: rgba(16, 16, 20, 0.66);
 }
 
 .extLink,
@@ -483,7 +483,8 @@
 }
 
 .row[aria-current='true'] .rowNum {
-  color: var(--c-red);
+  color: var(--c-paper);
+  opacity: 1;
 }
 
 .rowNum,

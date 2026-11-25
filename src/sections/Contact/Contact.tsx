@@ -85,7 +85,7 @@ export function Contact() {
       <div className={styles.top}>
         <motion.p className={`mono ${styles.kicker}`} variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
           <span className={styles.num}>{meta.num}</span>
-          <span>{meta.blurb}</span>
+          <span>e-mail · whatsapp · linkedin</span>
         </motion.p>
 
         <h2 id="contato-title" className={styles.title}>

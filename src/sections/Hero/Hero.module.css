@@ -209,7 +209,8 @@
   position: absolute;
   z-index: 2;
   right: calc(var(--gutter) + 3.5rem);
-  top: 41%;
+  /* nunca sobe para baixo da janela leia-me.txt em telas baixas */
+  top: max(41%, calc(var(--header-h) + 18.5rem));
   display: flex;
   flex-direction: column;
   align-items: flex-end;

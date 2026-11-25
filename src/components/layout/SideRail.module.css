@@ -22,7 +22,7 @@
   text-decoration: none;
   font-family: var(--f-mono);
   font-size: var(--fs-micro);
-  color: rgba(236, 230, 220, 0.5);
+  color: rgba(236, 230, 220, 0.72);
   transition: color var(--dur-fast);
 }
 
