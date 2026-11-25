@@ -1,6 +1,6 @@
 import { useCallback, useRef, useState } from 'react';
 import { MotionConfig } from 'motion/react';
-import { sections } from './data/sections';
+import { sections, isEnabled, sectionMeta } from './data/sections';
 import { useActiveSection } from './hooks/useActiveSection';
 import { Header } from './components/layout/Header';
 import { SideRail } from './components/layout/SideRail';
@@ -16,7 +16,6 @@ import { FloatingSticker } from './components/stickers/FloatingSticker';
 import { PlaceholderSection } from './sections/Placeholder/PlaceholderSection';
 
 const ids = sections.map((s) => s.id);
-const byId = Object.fromEntries(sections.map((s) => [s.id, s])) as Record<string, (typeof sections)[number]>;
 
 export default function App() {
   const active = useActiveSection(ids);
@@ -44,18 +43,26 @@ export default function App() {
 
       <main id="conteudo">
         <Hero />
-        {/* Seções ainda provisórias: Trabalhos e Sobre mim */}
-        <PlaceholderSection meta={byId.trabalhos} tone="black" note="Galeria de projetos com dados separados — próxima etapa.">
+        {/* Trabalhos e Sobre mim: desativadas em src/data/sections.ts até o conteúdo chegar */}
+        {isEnabled('trabalhos') && (
+          <>
+        <PlaceholderSection meta={sectionMeta('trabalhos')} tone="black" note="Galeria de projetos com dados separados — próxima etapa.">
           <FloatingSticker name="estrela" pos={{ top: '12%', right: '18%' }} rotate={10} mobile={{ pos: { top: '0.75rem', right: '4%' }, size: '5.5rem' }} />
           <FloatingSticker name="autoral" pos={{ bottom: '10%', left: '38%' }} rotate={-8} delay={0.15} size="clamp(6rem, 4rem + 5vw, 9.5rem)" mobile={{ pos: { top: '40%', left: '8%' }, size: '6rem' }} />
           <FloatingSticker name="raio" pos={{ top: '8%', left: '46%' }} rotate={12} delay={0.3} size="clamp(5.5rem, 4rem + 4vw, 8.5rem)" hideOnMobile />
         </PlaceholderSection>
+          </>
+        )}
+        {isEnabled('sobre') && (
+          <>
         <TornEdge seed="sobre" color="var(--c-paper)" fibre="var(--c-paper-dim)" />
-        <PlaceholderSection meta={byId.sobre} tone="paper" note="Apresentação pessoal com espaço para fotografia — próxima etapa.">
+        <PlaceholderSection meta={sectionMeta('sobre')} tone="paper" note="Apresentação pessoal com espaço para fotografia — próxima etapa.">
           <FloatingSticker name="smiley" pos={{ top: '14%', right: '14%' }} rotate={-10} mobile={{ pos: { top: '0.75rem', right: '4%' }, size: '5.5rem' }} />
           <FloatingSticker name="rec" pos={{ bottom: '8%', left: '6%' }} rotate={6} delay={0.15} size="clamp(7rem, 4.5rem + 6vw, 11rem)" mobile={{ pos: { top: '42%', right: '8%' }, size: '7rem' }} />
           <FloatingSticker name="coracao" pos={{ top: '46%', right: '40%' }} rotate={8} delay={0.3} size="clamp(5rem, 3.5rem + 4vw, 8rem)" hideOnMobile />
         </PlaceholderSection>
+          </>
+        )}
         <TornEdge seed="jukebox" color="var(--c-blue)" />
         <Jukebox />
         <Videoteca />

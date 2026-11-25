@@ -2,6 +2,7 @@ import { useRef, useState, type PointerEvent } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { site } from '../../data/site';
+import { sections, sectionMeta } from '../../data/sections';
 import { useFinePointer } from '../../hooks/useMediaQuery';
 import { MaskText } from '../../components/ui/MaskText';
 import { RetroWindow } from '../../components/ui/RetroWindow';
@@ -82,7 +83,7 @@ export function Hero() {
         </p>
         <p className={`mono ${styles.metaCenter}`}>Folha de rosto</p>
         <p className="mono">
-          Nº 01 <span className={styles.dim}>—</span> 06
+          Nº 01 <span className={styles.dim}>—</span> {String(sections.length).padStart(2, '0')}
         </p>
       </motion.div>
 
@@ -135,13 +136,13 @@ export function Hero() {
 
       {/* ——— Chamadas ——— */}
       <motion.div className={styles.ctaRow} variants={fadeUp} initial="hidden" animate="show" custom={12}>
-        <a href="#trabalhos" className={styles.cta} data-cursor="ver">
-          <span className={styles.ctaIdx}>02</span>
-          <span>Explorar trabalhos</span>
+        <a href="#videoteca" className={styles.cta} data-cursor="jogar">
+          <span className={styles.ctaIdx}>{sectionMeta('videoteca').num}</span>
+          <span>Montar a tier list</span>
           <ArrowRight size={18} aria-hidden="true" />
         </a>
-        <a href="#sobre" className={styles.ctaGhost} data-cursor="ler">
-          Sobre mim
+        <a href="#contato" className={styles.ctaGhost} data-cursor="falar">
+          Contato
         </a>
       </motion.div>
 
@@ -150,7 +151,7 @@ export function Hero() {
         initial={{ scale: 0, rotate: -40 }}
         animate={{ scale: 1, rotate: 12, transition: { delay: 1.3, type: 'spring', stiffness: 160, damping: 14 } }}
       >
-        <Sticker href="#trabalhos" label="Ir para trabalhos" />
+        <Sticker href={`#${sections[1]?.id ?? 'contato'}`} label={`Ir para ${sections[1]?.label ?? 'Contato'}`} />
       </motion.div>
 
       <FloatingSticker

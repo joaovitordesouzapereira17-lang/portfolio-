@@ -54,7 +54,7 @@ const Selo = () => (
     <g className={styles.spin}>
       <text style={{ ...mono, fontSize: 16, letterSpacing: '0.24em' }} fill={C.black}>
         <textPath href="#selo-ring" textLength="530">
-          EXPLORE OS TRABALHOS ✶ ROLE PARA BAIXO ✶
+          EXPLORE O PORTFÓLIO ✶ ROLE PARA BAIXO ✶
         </textPath>
       </text>
     </g>

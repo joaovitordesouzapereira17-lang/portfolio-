@@ -8,7 +8,7 @@ interface Props {
   className?: string;
 }
 
-/** Selo "explore os trabalhos" (desenhado no Figma) funcionando como link */
+/** Selo "explore o portfólio" (desenhado no Figma) funcionando como link */
 export function Sticker({ href, label, className }: Props) {
   const Selo = stickerArt.selo;
   return (

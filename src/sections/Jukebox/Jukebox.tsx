@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { motion } from 'motion/react';
 import { ExternalLink, Pause, Play, SkipBack, SkipForward, Volume2, VolumeX } from 'lucide-react';
-import { sections } from '../../data/sections';
+import { sectionMeta } from '../../data/sections';
 import { tracks, type Track } from '../../data/jukebox';
 import { useJukebox, formatTime, trackDuration } from '../../hooks/useJukebox';
 import { spotifyUrl } from '../../lib/spotify';
@@ -13,7 +13,7 @@ import { Equalizer } from './Equalizer';
 import { FloatingSticker } from '../../components/stickers/FloatingSticker';
 import styles from './Jukebox.module.css';
 
-const meta = sections.find((s) => s.id === 'jukebox')!;
+const meta = sectionMeta('jukebox');
 
 function Cover({ track, i }: { track: Track; i: number }) {
   return track.cover ? (
@@ -48,6 +48,7 @@ export function Jukebox() {
         </motion.p>
       </div>
 
+      <FloatingSticker name="smiley" pos={{ top: '6%', left: '42%' }} rotate={-10} size="clamp(6rem, 4rem + 4vw, 9rem)" hideOnMobile />
       <FloatingSticker name="cassete" pos={{ bottom: '6%', left: '6%' }} rotate={-9} delay={0.2} size="clamp(7rem, 4.5rem + 7vw, 12rem)" mobile={{ pos: { top: '5rem', right: '4%' }, size: '6.5rem' }} />
 
       <div className={styles.grid}>

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { RotateCcw, Sparkles } from 'lucide-react';
-import { sections } from '../../data/sections';
+import { sectionMeta } from '../../data/sections';
 import { films } from '../../data/videoteca';
 import { useTierList } from '../../hooks/useTierList';
 import { Ransom } from '../../components/ui/Ransom';
@@ -13,7 +13,7 @@ import { ResultCard } from './ResultCard';
 import { FloatingSticker } from '../../components/stickers/FloatingSticker';
 import styles from './Videoteca.module.css';
 
-const meta = sections.find((s) => s.id === 'videoteca')!;
+const meta = sectionMeta('videoteca');
 
 /**
  * 05 — VIDEOTECA
@@ -49,6 +49,7 @@ export function Videoteca() {
     <section id="videoteca" className={styles.section} aria-label={meta.label}>
       <div className={styles.perf} aria-hidden="true" />
 
+      <FloatingSticker name="estrela" pos={{ top: '4.5rem', left: '47%' }} rotate={12} size="clamp(6rem, 4rem + 4vw, 9rem)" hideOnMobile delay={0.15} />
       <FloatingSticker name="ticket" pos={{ top: '3.5rem', right: '6%' }} rotate={-10} size="clamp(7rem, 4.5rem + 7vw, 12.5rem)" hideOnMobile />
 
       <header className={styles.head}>

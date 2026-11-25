@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowUp, ArrowUpRight, Check, Copy } from 'lucide-react';
-import { sections } from '../../data/sections';
+import { sectionMeta } from '../../data/sections';
 import { site } from '../../data/site';
 import { MaskText } from '../../components/ui/MaskText';
 import { Marquee } from '../../components/ui/Marquee';
@@ -11,7 +11,7 @@ import { fadeUp } from '../../lib/motion';
 import { FloatingSticker } from '../../components/stickers/FloatingSticker';
 import styles from './Contact.module.css';
 
-const meta = sections.find((s) => s.id === 'contato')!;
+const meta = sectionMeta('contato');
 
 interface Channel {
   key: string;

@@ -1,10 +1,4 @@
-export type SectionId =
-  | 'inicio'
-  | 'trabalhos'
-  | 'sobre'
-  | 'jukebox'
-  | 'videoteca'
-  | 'contato';
+export type SectionId = 'inicio' | 'trabalhos' | 'sobre' | 'jukebox' | 'videoteca' | 'contato';
 
 export interface SectionMeta {
   id: SectionId;
@@ -14,11 +8,27 @@ export interface SectionMeta {
   blurb: string;
 }
 
-export const sections: SectionMeta[] = [
-  { id: 'inicio', num: '01', label: 'Início', blurb: 'capa / apresentação' },
-  { id: 'trabalhos', num: '02', label: 'Trabalhos', blurb: 'projetos selecionados' },
-  { id: 'sobre', num: '03', label: 'Sobre mim', blurb: 'quem, como, com o quê' },
-  { id: 'jukebox', num: '04', label: 'Jukebox', blurb: 'trilha de trabalho' },
-  { id: 'videoteca', num: '05', label: 'Videoteca', blurb: 'filmes de referência' },
-  { id: 'contato', num: '06', label: 'Contato', blurb: 'vamos conversar' },
+/**
+ * Todas as seções, na ordem do site.
+ * `enabled: false` esconde a seção do menu, do trilho lateral e da página —
+ * para reativar Trabalhos e Sobre mim quando o conteúdo chegar, troque para true.
+ * A numeração (01, 02…) é recalculada sozinha.
+ */
+const all: (Omit<SectionMeta, 'num'> & { enabled: boolean })[] = [
+  { id: 'inicio', label: 'Início', blurb: 'capa / apresentação', enabled: true },
+  { id: 'trabalhos', label: 'Trabalhos', blurb: 'projetos selecionados', enabled: false },
+  { id: 'sobre', label: 'Sobre mim', blurb: 'quem, como, com o quê', enabled: false },
+  { id: 'jukebox', label: 'Jukebox', blurb: 'trilha de trabalho', enabled: true },
+  { id: 'videoteca', label: 'Videoteca', blurb: 'filmes de referência', enabled: true },
+  { id: 'contato', label: 'Contato', blurb: 'vamos conversar', enabled: true },
 ];
+
+export const sections: SectionMeta[] = all
+  .filter((s) => s.enabled)
+  .map(({ enabled: _e, ...s }, i) => ({ ...s, num: String(i + 1).padStart(2, '0') }));
+
+export const isEnabled = (id: SectionId) => sections.some((s) => s.id === id);
+
+/** Metadados de uma seção (inclusive desativadas, para quando forem reativadas) */
+export const sectionMeta = (id: SectionId): SectionMeta =>
+  sections.find((s) => s.id === id) ?? { ...all.find((s) => s.id === id)!, num: '—' };
