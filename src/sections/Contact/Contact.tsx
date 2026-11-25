@@ -8,6 +8,7 @@ import { Marquee } from '../../components/ui/Marquee';
 import { Tape } from '../../components/ui/Tape';
 import { CropMarks } from '../../components/decor/CropMarks';
 import { fadeUp } from '../../lib/motion';
+import { FloatingSticker } from '../../components/stickers/FloatingSticker';
 import styles from './Contact.module.css';
 
 const meta = sections.find((s) => s.id === 'contato')!;
@@ -77,6 +78,9 @@ export function Contact() {
   return (
     <section id="contato" className={styles.section} aria-labelledby="contato-title">
       <CropMarks inset="1.25rem var(--gutter)" />
+
+      <FloatingSticker name="disquete" pos={{ top: '7rem', right: '26%' }} rotate={-14} size="clamp(6rem, 4rem + 5vw, 10rem)" hideOnMobile />
+      <FloatingSticker name="coracao" pos={{ bottom: '7.5rem', right: '9%' }} rotate={10} delay={0.2} size="clamp(5rem, 3.5rem + 4vw, 8.5rem)" />
 
       <div className={styles.top}>
         <motion.p className={`mono ${styles.kicker}`} variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}>

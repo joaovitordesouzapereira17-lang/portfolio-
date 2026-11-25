@@ -1,0 +1,67 @@
+.sticker {
+  position: absolute;
+  z-index: 5;
+  aspect-ratio: 1;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  /* sombra de adesivo descolando */
+  filter: drop-shadow(5px 8px 6px rgba(0, 0, 0, 0.45));
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .sticker {
+    cursor: grab;
+  }
+  .sticker:active {
+    cursor: grabbing;
+  }
+}
+
+.svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.spin {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: spin 22s linear infinite;
+}
+
+.reel {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: spin 3s linear infinite;
+}
+
+.recDot {
+  animation: blink 1.4s steps(2, jump-none) infinite;
+}
+
+@keyframes spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes blink {
+  to {
+    opacity: 0.25;
+  }
+}
+
+@media (max-width: 760px) {
+  .hideMobile {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spin,
+  .reel,
+  .recDot {
+    animation: none;
+  }
+}

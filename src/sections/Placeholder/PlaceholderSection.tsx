@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import type { SectionMeta } from '../../data/sections';
 import { SectionHeader } from '../../components/ui/SectionHeader';
 import styles from './PlaceholderSection.module.css';
@@ -6,13 +7,15 @@ interface Props {
   meta: SectionMeta;
   tone: 'black' | 'wine' | 'blue' | 'purple' | 'paper';
   note: string;
+  /** elementos decorativos (stickers) */
+  children?: ReactNode;
 }
 
 /**
  * Seção provisória da ETAPA 1 — mantém a navegação funcionando
  * enquanto a linguagem visual é validada. Será substituída na etapa 2.
  */
-export function PlaceholderSection({ meta, tone, note }: Props) {
+export function PlaceholderSection({ meta, tone, note, children }: Props) {
   return (
     <section id={meta.id} className={styles.section} data-tone={tone} aria-label={meta.label}>
       <SectionHeader num={meta.num} title={meta.label} kicker={meta.blurb} />
@@ -20,6 +23,7 @@ export function PlaceholderSection({ meta, tone, note }: Props) {
         <span className="mono">Em montagem</span>
         <p>{note}</p>
       </div>
+      {children}
     </section>
   );
 }

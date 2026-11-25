@@ -8,6 +8,7 @@ import { RetroWindow } from '../../components/ui/RetroWindow';
 import { Sticker } from '../../components/ui/Sticker';
 import { Marquee } from '../../components/ui/Marquee';
 import { CropMarks } from '../../components/decor/CropMarks';
+import { FloatingSticker } from '../../components/stickers/FloatingSticker';
 import { fadeUp, pasteIn } from '../../lib/motion';
 import styles from './Hero.module.css';
 
@@ -149,12 +150,17 @@ export function Hero() {
         initial={{ scale: 0, rotate: -40 }}
         animate={{ scale: 1, rotate: 12, transition: { delay: 1.3, type: 'spring', stiffness: 160, damping: 14 } }}
       >
-        <Sticker
-          href="#trabalhos"
-          label="Ir para trabalhos"
-          text="Explore os trabalhos ✶ role para baixo ✶ "
-        />
+        <Sticker href="#trabalhos" label="Ir para trabalhos" />
       </motion.div>
+
+      <FloatingSticker
+        name="cursor"
+        pos={{ top: 'calc(var(--header-h) + 19rem)', right: 'calc(var(--gutter) + 26rem)' }}
+        size="clamp(4.5rem, 3rem + 3vw, 6.5rem)"
+        rotate={-12}
+        hideOnMobile
+        delay={1.5}
+      />
 
       {/* ——— Fita ——— */}
       <div className={styles.tape} aria-hidden="true">

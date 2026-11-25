@@ -10,6 +10,7 @@ import { Tape } from '../../components/ui/Tape';
 import { CoverArt } from '../../components/decor/CoverArt';
 import { fadeUp } from '../../lib/motion';
 import { Equalizer } from './Equalizer';
+import { FloatingSticker } from '../../components/stickers/FloatingSticker';
 import styles from './Jukebox.module.css';
 
 const meta = sections.find((s) => s.id === 'jukebox')!;
@@ -46,6 +47,8 @@ export function Jukebox() {
           </span>
         </motion.p>
       </div>
+
+      <FloatingSticker name="cassete" pos={{ bottom: '6%', left: '6%' }} rotate={-9} delay={0.2} size="clamp(7rem, 4.5rem + 7vw, 12rem)" />
 
       <div className={styles.grid}>
         {/* ——— Caixa de CD ——— */}
