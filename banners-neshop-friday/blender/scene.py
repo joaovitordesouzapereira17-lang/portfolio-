@@ -17,7 +17,7 @@ L = {
     "1920": dict(W=1920, H=480,
                  title=dict(x=150, y=170, size=150, gap=-34, depth=0.22),
                  tag=dict(x=905, y=112, w=180, rot=14),
-                 stage=dict(cx=1515, base=388, k=0.84)),
+                 stage=dict(cx=1500, base=395, k=0.86)),
     "1500": dict(W=1500, H=250,
                  title=dict(x=92, y=118, size=85, gap=-20, depth=0.15),
                  tag=dict(x=528, y=52, w=112, rot=14),
@@ -169,6 +169,40 @@ def tag(cx, cy, wpx, rot_deg, z=0.4, show_string=True, mat_body=M_TAG):
 
 tg = L["tag"]; tag(tg["x"], tg["y"], tg["w"], tg["rot"])
 
+
+# ---------- produtos (recortes PNG como planos com alpha + contorno neon) ----------
+USE_PRODUCTS = os.environ.get("NO_PRODUCTS") is None
+PRODUCTS = [
+    ("controle.png", 320, -135, 10, 0.0, 7),
+    ("alicate.png", 400, 15, -2, 0.5, -4),
+    ("testador.png", 120, 150, -30, 0.8, -3),
+]
+def product(fname, hpx, cx, bottom, z, rz):
+    img = bpy.data.images.load(os.path.join(HERE, "products", fname))
+    iw, ih = img.size; h = hpx / 100; w = h * iw / ih
+    def plane(scale, m):
+        bpy.ops.mesh.primitive_plane_add(size=1)
+        o_ = bpy.context.object; o_.scale = (w * scale, h * scale, 1)
+        o_.location = P(cx, bottom - hpx / 2, z); o_.rotation_euler = (0, 0, math.radians(rz))
+        o_.data.materials.append(m); return o_
+    m = bpy.data.materials.new(fname); m.use_nodes = True; nt_ = m.node_tree
+    b_ = nt_.nodes["Principled BSDF"]; tx = nt_.nodes.new("ShaderNodeTexImage"); tx.image = img
+    nt_.links.new(tx.outputs["Color"], b_.inputs["Base Color"])
+    nt_.links.new(tx.outputs["Color"], b_.inputs["Emission Color"])
+    nt_.links.new(tx.outputs["Alpha"], b_.inputs["Alpha"])
+    b_.inputs["Emission Strength"].default_value = 0.95; b_.inputs["Roughness"].default_value = 0.5
+    m.blend_method = "BLEND" if hasattr(m, "blend_method") else None
+    plane(1.0, m)
+    # halo ciano atrás do produto
+    g = bpy.data.materials.new(fname + "_glow"); g.use_nodes = True; ng = g.node_tree; ng.nodes.clear()
+    out = ng.nodes.new("ShaderNodeOutputMaterial"); mix = ng.nodes.new("ShaderNodeMixShader")
+    tr = ng.nodes.new("ShaderNodeBsdfTransparent"); em_ = ng.nodes.new("ShaderNodeEmission")
+    t2 = ng.nodes.new("ShaderNodeTexImage"); t2.image = img
+    em_.inputs["Color"].default_value = (*CYAN, 1); em_.inputs["Strength"].default_value = 3.0
+    ng.links.new(t2.outputs["Alpha"], mix.inputs["Fac"]); ng.links.new(tr.outputs[0], mix.inputs[1])
+    ng.links.new(em_.outputs[0], mix.inputs[2]); ng.links.new(mix.outputs[0], out.inputs[0])
+    gp = plane(1.035, g); gp.location.z -= 0.05; gp.location.y += 0.0
+
 # ---------- palco com anel e % 3D ----------
 st = L["stage"]
 if st:
@@ -193,11 +227,15 @@ if st:
     bpy.ops.mesh.primitive_torus_add(major_radius=ringR, minor_radius=0.028 * k, major_segments=200, minor_segments=12,
                                      location=c + Vector((0, ringR * 0.92, -1.5)), rotation=(0, 0, 0))
     ring = bpy.context.object; ring.data.materials.append(M_NEON); bpy.ops.object.shade_smooth()
-    # "%" grande
-    fs = 3.0 * k
-    big = text_obj("%", FONT_B, fs, c + Vector((0, 0.35 * k, 2.2)), 0.32 * k, bevel=0.03 * k)
-    big.data.align_x = "CENTER"; big.rotation_euler = (math.radians(-6), math.radians(-22), 0)
-    to_mesh_two_mats(big, M_PCT, M_SIDE)
+    if not USE_PRODUCTS:
+        fs = 3.0 * k
+        big = text_obj("%", FONT_B, fs, c + Vector((0, 0.35 * k, 2.2)), 0.32 * k, bevel=0.03 * k)
+        big.data.align_x = "CENTER"; big.rotation_euler = (math.radians(-6), math.radians(-22), 0)
+        to_mesh_two_mats(big, M_PCT, M_SIDE)
+    else:
+        # (arquivo, altura px, deslocamento x px, base px acima do centro, z, rotação z)
+        for f, hp, dx, dy, z, rz in PRODUCTS:
+            product(f, hp * k, st["cx"] + dx * k, st["base"] - dy * k, 2.5 + z, rz)
     # etiqueta flutuante pequena
     tag(st["cx"] + 175 * k, st["base"] - 330 * k, 80 * k, -18, z=0.8, show_string=False)
     # luz ciano dentro do anel
