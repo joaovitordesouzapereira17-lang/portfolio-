@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<title>Neshop Friday</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;0,800;1,800;1,900&display=swap" rel="stylesheet">
+<style>
+:root{--bg0:#00040d;--bg1:#021a2c;--cyan:#22d3ff;--cyan2:#7fe8ff;--blue:#0c5d80;--deep:#06344a;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#222;font-family:Montserrat,sans-serif;padding:40px;display:flex;flex-direction:column;gap:40px;align-items:flex-start}
+.banner{position:relative;overflow:hidden;color:#fff;
+  background:radial-gradient(ellipse 70% 90% at 30% 50%,#05253d 0%,#010b18 55%,var(--bg0) 100%)}
+.circuit{position:absolute;inset:0;pointer-events:none}
+.bokeh{position:absolute;border-radius:50%;background:var(--cyan);pointer-events:none}
+/* título com extrusão + neon */
+.title{position:absolute;font-style:italic;font-weight:900;line-height:.86;letter-spacing:-.01em;text-transform:uppercase}
+.title .row{position:relative;display:block;white-space:nowrap}
+.title .ext{position:absolute;left:0;top:0;color:var(--deep)}
+.title .face{position:relative;color:#fff}
+.glow{filter:drop-shadow(0 0 6px rgba(34,211,255,.95)) drop-shadow(0 0 22px rgba(34,211,255,.55))}
+.outline{position:absolute;left:0;top:0;color:transparent;-webkit-text-stroke:2px var(--cyan)}
+/* etiqueta */
+.tag{position:absolute;filter:drop-shadow(0 0 10px rgba(34,211,255,.7)) drop-shadow(0 8px 14px rgba(0,0,0,.6))}
+.sub{position:absolute;font-weight:600;color:#cfefff;letter-spacing:.02em}
+.sub b{color:var(--cyan);font-weight:800}
+.cta{position:absolute;font-weight:800;font-style:italic;text-transform:uppercase;letter-spacing:.06em;color:#00121f;
+  background:linear-gradient(180deg,#8ff0ff,var(--cyan));border-radius:999px;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 18px rgba(34,211,255,.75),inset 0 -3px 0 rgba(0,0,0,.18)}
+/* palco */
+.stage{position:absolute}
+.ring{position:absolute;border-radius:50%;border:3px solid var(--cyan);
+  box-shadow:0 0 14px var(--cyan),0 0 40px rgba(34,211,255,.5),inset 0 0 14px var(--cyan),inset 0 0 50px rgba(34,211,255,.25);
+  -webkit-mask:linear-gradient(200deg,#000 25%,rgba(0,0,0,.15) 60%,#000 95%);}
+.plat{position:absolute;border-radius:50%;
+  background:radial-gradient(ellipse at 50% 40%,#0d3a55 0%,#041726 60%,#020b14 100%);
+  box-shadow:0 0 0 3px var(--cyan),0 0 22px 4px rgba(34,211,255,.8),0 0 70px 10px rgba(34,211,255,.35)}
+.plat2{position:absolute;border-radius:50%;background:linear-gradient(180deg,#062033,#01070e);
+  box-shadow:0 0 0 2px rgba(34,211,255,.6),0 0 24px rgba(34,211,255,.4)}
+.beam{position:absolute;background:radial-gradient(ellipse at 50% 100%,rgba(34,211,255,.35),transparent 70%)}
+.pct{position:absolute;font-weight:900;font-style:normal;line-height:1}
+.pct .face{background:linear-gradient(160deg,#ffffff 20%,#bdf3ff 55%,#5fd8ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ftag{position:absolute}
+</style></head><body>
+
+<!-- ============ 1920 x 480 ============ -->
+<div class="banner" id="b1920" style="width:1920px;height:480px">
+  <svg class="circuit" data-seed="7" data-w="1920" data-h="480"></svg>
+  <div class="title" data-size="150" data-depth="14" style="left:150px;top:62px">
+    <span class="row">NESHOP</span><span class="row" style="margin-left:-34px">FRIDAY</span>
+  </div>
+  <div class="tag" data-tag="1" style="left:818px;top:40px;width:180px;transform:rotate(14deg)"></div>
+  <div class="sub" style="left:122px;top:372px;font-size:28px">Preços especiais em <b>peças e componentes</b></div>
+  <div class="cta" style="left:812px;top:360px;width:230px;height:58px;font-size:22px">Aproveite</div>
+  <div class="stage" style="left:1230px;top:0;width:560px;height:480px" data-stage="0.86"></div>
+</div>
+
+<!-- ============ 1500 x 250 ============ -->
+<div class="banner" id="b1500" style="width:1500px;height:250px">
+  <svg class="circuit" data-seed="3" data-w="1500" data-h="250"></svg>
+  <div class="title" data-size="112" data-depth="10" style="left:90px;top:22px">
+    <span class="row">NESHOP</span><span class="row" style="margin-left:-24px;margin-top:6px">FRIDAY</span>
+  </div>
+  <div class="tag" data-tag="1" style="left:592px;top:10px;width:118px;transform:rotate(14deg)"></div>
+  <div class="sub" style="left:790px;top:62px;font-size:25px;line-height:1.35">Preços especiais em<br><b>peças e componentes</b></div>
+  <div class="cta" style="left:792px;top:152px;width:200px;height:48px;font-size:19px">Aproveite</div>
+  <div class="stage" style="left:1130px;top:0;width:320px;height:250px" data-stage="0.44"></div>
+</div>
+
+<!-- ============ 600 x 338 ============ -->
+<div class="banner" id="b600" style="width:600px;height:338px">
+  <svg class="circuit" data-seed="11" data-w="600" data-h="338"></svg>
+  <div class="title" data-size="96" data-depth="9" style="left:52px;top:58px">
+    <span class="row">NESHOP</span><span class="row" style="margin-left:-20px">FRIDAY</span>
+  </div>
+  <div class="tag" data-tag="1" style="left:470px;top:30px;width:104px;transform:rotate(14deg)"></div>
+  <div class="sub" style="left:0;width:600px;text-align:center;top:262px;font-size:19px">Preços especiais em <b>peças e componentes</b></div>
+</div>
+
+<script>
+// PRNG
+function rng(s){return()=>{s=(s*16807)%2147483647;return(s-1)/2147483646}}
+// Circuito
+document.querySelectorAll('svg.circuit').forEach(svg=>{
+  const W=+svg.dataset.w,H=+svg.dataset.h,r=rng(+svg.dataset.seed*9973);
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  let g='<defs><linearGradient id="fade'+W+'" x1="0" x2="1"><stop offset="0" stop-color="#fff"/><stop offset=".28" stop-color="#fff" stop-opacity=".05"/><stop offset=".62" stop-color="#fff" stop-opacity=".05"/><stop offset="1" stop-color="#fff" stop-opacity=".9"/></linearGradient><mask id="m'+W+'"><rect width="'+W+'" height="'+H+'" fill="url(#fade'+W+')"/></mask></defs><g mask="url(#m'+W+')" stroke="#22d3ff" fill="none" stroke-width="1.4" opacity=".35">';
+  const n=Math.round(W/22);
+  for(let i=0;i<n;i++){
+    const left=r()<.5; let x=left?0:W, y=r()*H; let d=`M${x} ${y}`;
+    const dir=left?1:-1, segs=2+Math.floor(r()*3);
+    for(let k=0;k<segs;k++){
+      const len=20+r()*W*.08;
+      if(k%2==0){x+=dir*len}else{const dy=(r()<.5?-1:1)*len*.6;x+=dir*Math.abs(dy);y+=dy}
+      d+=` L${x.toFixed(1)} ${y.toFixed(1)}`;
+    }
+    g+=`<path d="${d}"/><circle cx="${x}" cy="${y}" r="3.2" fill="#00040d"/>`;
+  }
+  svg.innerHTML=g+'</g>';
+});
+// Bokeh
+document.querySelectorAll('.banner').forEach((b,bi)=>{
+  const W=b.offsetWidth,H=b.offsetHeight,r=rng(31+bi*17),n=Math.round(W/60);
+  for(let i=0;i<n;i++){const d=document.createElement('div');d.className='bokeh';
+    const s=2+r()*(H/40);d.style.cssText=`width:${s}px;height:${s}px;left:${r()*W}px;top:${r()*H}px;opacity:${.15+r()*.45};filter:blur(${r()<.4?s/2.5:0}px);box-shadow:0 0 ${s*2}px #22d3ff`;
+    b.insertBefore(d,b.children[1]);}
+});
+// Título extrudado
+document.querySelectorAll('.title').forEach(t=>{
+  const size=+t.dataset.size,depth=+t.dataset.depth;t.style.fontSize=size+'px';
+  t.querySelectorAll('.row').forEach(row=>{
+    const txt=row.textContent;row.textContent='';
+    let sh=[];for(let i=1;i<=depth;i++){const c=i==depth?'#010a12':(i>depth*.6?'#042536':'#0a4766');sh.push(`${i*.55}px ${i}px 0 ${c}`)}
+    sh.push(`${depth*.6}px ${depth+6}px 18px rgba(0,0,0,.8)`);
+    row.innerHTML=`<span class="ext" style="text-shadow:${sh.join(',')}">${txt}</span><span class="glow" style="display:inline-block;position:relative"><span class="face">${txt}</span></span>`;
+  });
+});
+// Etiqueta "%" (SVG)
+function tagSVG(id){return `<svg viewBox="0 0 220 150" style="width:100%;display:block;overflow:visible">
+ <defs><linearGradient id="tg${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1688b8"/><stop offset="1" stop-color="#0a4a68"/></linearGradient></defs>
+ <path d="M-30 40 C -10 10, 10 70, 34 70" stroke="#7fe8ff" stroke-width="2.4" fill="none"/>
+ <path d="M40 75 L78 22 Q84 14 95 14 L198 14 Q210 14 210 26 L210 124 Q210 136 198 136 L95 136 Q84 136 78 128 Z" fill="url(#tg${id})" stroke="#7fe8ff" stroke-width="3"/>
+ <path d="M58 75 L88 32 L196 32 L196 118 L88 118 Z" fill="none" stroke="#7fe8ff" stroke-width="1.6" stroke-dasharray="6 5" opacity=".7"/>
+ <circle cx="70" cy="75" r="9" fill="#00040d" stroke="#7fe8ff" stroke-width="2.4"/>
+ <text x="146" y="104" text-anchor="middle" font-family="Montserrat" font-weight="900" font-style="italic" font-size="84" fill="#fff">%</text></svg>`}
+document.querySelectorAll('[data-tag]').forEach((t,i)=>t.innerHTML=tagSVG(i));
+// Palco com anel neon e % 3D
+document.querySelectorAll('[data-stage]').forEach((s,i)=>{
+  const k=+s.dataset.stage,W=s.offsetWidth,H=s.offsetHeight,cx=W/2;
+  const ringD=420*k, platW=400*k, platH=78*k, baseY=H-92*k;
+  let ext=[];const dep=Math.round(22*k)||8;for(let j=1;j<=dep;j++)ext.push(`${j*.3}px ${j}px 0 ${j>dep*.6?'#042536':'#0b5578'}`);
+  ext.push(`0 ${dep+10}px 30px rgba(0,0,0,.8)`);
+  const fs=300*k;
+  s.innerHTML=`
+  <div class="beam" style="left:${cx-platW/2}px;top:${baseY-ringD*.75}px;width:${platW}px;height:${ringD*.8}px"></div>
+  <div class="ring" style="left:${cx-ringD/2}px;top:${baseY-ringD+platH*.25}px;width:${ringD}px;height:${ringD}px"></div>
+  <div class="plat2" style="left:${cx-platW*.56}px;top:${baseY+platH*.3}px;width:${platW*1.12}px;height:${platH*1.05}px"></div>
+  <div class="plat" style="left:${cx-platW/2}px;top:${baseY}px;width:${platW}px;height:${platH}px"></div>
+  <div class="pct" style="font-size:${fs}px;left:${cx-fs*.43}px;top:${baseY-fs*.95}px">
+     <span style="position:absolute;color:#0b5578;text-shadow:${ext.join(',')}">%</span>
+     <span class="face" style="position:relative;filter:drop-shadow(0 0 10px rgba(34,211,255,.7))">%</span></div>
+  <div class="ftag" style="left:${cx+ringD*.33}px;top:${baseY-ringD*.85}px;width:${95*k}px;transform:rotate(-18deg);filter:blur(${1.2*k}px) drop-shadow(0 0 10px rgba(34,211,255,.6));opacity:.9">${tagSVG('f'+i)}</div>
+  `;
+});
+</script></body></html>
