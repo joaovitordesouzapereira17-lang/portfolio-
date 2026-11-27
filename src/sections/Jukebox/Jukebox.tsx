@@ -8,6 +8,7 @@ import { spotifyUrl } from '../../lib/spotify';
 import { SectionHeader } from '../../components/ui/SectionHeader';
 import { Tape } from '../../components/ui/Tape';
 import { CoverArt } from '../../components/decor/CoverArt';
+import { CassettePlayer } from '../../components/ui/CassettePlayer';
 import { fadeUp, enter } from '../../lib/motion';
 import { Equalizer } from './Equalizer';
 import { HalftoneSky } from '../../components/decor/HalftoneSky';
@@ -26,7 +27,7 @@ function Cover({ track, i }: { track: Track; i: number }) {
 
 /**
  * 04 — JUKEBOX
- * Caixa de CD + player estilo software dos anos 2000 + lista de faixas.
+ * Toca-fitas translúcido + player estilo software dos anos 2000 + lista de faixas.
  * Sem áudio automático: o som só começa num clique.
  */
 export function Jukebox() {
@@ -52,30 +53,39 @@ export function Jukebox() {
       <HalftoneSky />
       <FloatingSticker name="celular" pos={{ bottom: '3%', left: '31%' }} rotate={8} delay={0.25} size="clamp(6rem, 4rem + 5vw, 10rem)" hideOnMobile />
       <FloatingSticker name="smiley" pos={{ top: '6%', left: '42%' }} rotate={-10} size="clamp(6rem, 4rem + 4vw, 9rem)" hideOnMobile />
-      <FloatingSticker name="cassete" pos={{ bottom: '6%', left: '6%' }} rotate={-9} delay={0.2} size="clamp(7rem, 4.5rem + 7vw, 12rem)" mobile={{ pos: { top: '5rem', right: '4%' }, size: '6.5rem' }} />
 
       <div className={styles.grid}>
-        {/* ——— Caixa de CD ——— */}
+        {/* ——— Toca-fitas: clicar no aparelho toca/pausa; FF/REW trocam de faixa ——— */}
         <motion.div
-          className={styles.caseCol}
-          initial={enter({ opacity: 0, rotate: -8, y: 40 })}
-          whileInView={{ opacity: 1, rotate: -3, y: 0 }}
+          className={styles.deckCol}
+          initial={enter({ opacity: 0, y: 40 })}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className={styles.disc} data-playing={j.playing || undefined} aria-hidden="true">
-            <span className={styles.discHole} />
-          </div>
-          <div className={styles.jewel}>
-            <div className={styles.hinge} aria-hidden="true" />
-            <div className={styles.coverBig}>
-              <Cover track={j.track} i={j.index} key={j.track.id} />
-            </div>
-            <span className={styles.gloss} aria-hidden="true" />
-          </div>
-          <Tape tilt={-4} tone="red" className={styles.caseTape}>
-            {j.playing ? 'tocando agora' : 'selecionada'} · {n}
-          </Tape>
+          <CassettePlayer
+            playing={j.playing}
+            onToggle={j.playable ? j.toggle : undefined}
+            onNext={j.next}
+            onPrev={j.prev}
+            label={`${j.playing ? 'Pausar' : 'Tocar'} ${j.track.title}`}
+            labelText={j.track.title.replace(/"/g, '')}
+            brandName="jukebox"
+            casingColor="#7139A8"
+            casingOpacity={0.5}
+            accentColor="#C8203D"
+            metalColor="#B9B5BF"
+            doorColor="#ECE6DC"
+            cassetteLabelColor="#F6F1E7"
+            tapeColor="#3B1622"
+            size={720}
+          />
+          <p className={`mono ${styles.deckHint}`}>
+            <Tape tilt={-3} tone="red">
+              {j.playing ? 'tocando agora' : 'fita selecionada'} · {n}
+            </Tape>
+            <span>clique no aparelho para tocar · ◀◀ ▶▶ trocam de faixa</span>
+          </p>
         </motion.div>
 
         {/* ——— Player ——— */}
