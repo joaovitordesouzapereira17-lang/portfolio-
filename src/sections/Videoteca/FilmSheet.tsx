@@ -55,7 +55,7 @@ export function FilmSheet({ open, onClose, onNavigate }: Props) {
                 <ChevronLeft size={18} />
               </button>
               <span className="mono">
-                {num(open)} / {num(films.length - 1)}
+                {num(open)} / {String(films.length).padStart(2, '0')}
               </span>
               <button type="button" onClick={() => go(1)} aria-label="Próxima ficha">
                 <ChevronRight size={18} />

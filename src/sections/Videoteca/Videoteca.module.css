@@ -143,3 +143,19 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ——— Prateleira (coverflow) ——— */
+.shelf {
+  position: relative;
+  margin: 0 calc(var(--gutter) * -1) clamp(2.5rem, 5vw, 4rem);
+}
+
+.boardHead {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+  color: var(--c-text-dim);
+  font-size: var(--fs-small);
+}

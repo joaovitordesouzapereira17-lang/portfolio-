@@ -9,11 +9,21 @@ import { Tape } from '../../components/ui/Tape';
 import { fadeUp, enter } from '../../lib/motion';
 import { TierBoard } from './TierBoard';
 import { FilmSheet } from './FilmSheet';
+import { CoverflowCarousel, type CoverflowItem } from '../../components/ui/CoverflowCarousel';
+import { PosterArt } from '../../components/decor/PosterArt';
 import { ResultCard } from './ResultCard';
 import { FloatingSticker } from '../../components/stickers/FloatingSticker';
 import styles from './Videoteca.module.css';
 
 const meta = sectionMeta('videoteca');
+
+const shelf: CoverflowItem[] = films.map((f, i) => ({
+  id: f.id,
+  title: f.title,
+  subtitle: `${f.year} · ${f.director}`,
+  image: f.poster,
+  render: f.poster ? undefined : <PosterArt variant={i} title={f.title} year={f.year} />,
+}));
 
 /**
  * 05 — VIDEOTECA
@@ -78,6 +88,21 @@ export function Videoteca() {
           </p>
         </div>
       </header>
+
+      {/* ——— Prateleira: folheie os filmes antes de jogar ——— */}
+      <div className={styles.shelf}>
+        <CoverflowCarousel
+          items={shelf}
+          label="Prateleira de filmes favoritos"
+          openLabel="ver ficha"
+          onOpen={(_, i) => setSheet(i)}
+        />
+      </div>
+
+      <div className={styles.boardHead}>
+        <Tape tilt={-2} tone="red">sua vez</Tape>
+        <p className="mono">monte a sua tier list ↓</p>
+      </div>
 
       <div className={styles.progress} aria-hidden="true">
         <span style={{ width: `${(placed / films.length) * 100}%` }} />
